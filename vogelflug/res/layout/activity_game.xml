@@ -8,9 +8,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="paetow.seifert.vogelflug.GameActivity" >
 
-    <TextView
+    <paetow.seifert.vogelflug.GameView
+        android:id="@+id/gameView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <Button
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignRight="@+id/gameView1"
+        android:layout_alignTop="@+id/gameView1"
+        android:layout_marginRight="22dp"
+        android:layout_marginTop="54dp"
+        android:text="Button" />
 
 </RelativeLayout>

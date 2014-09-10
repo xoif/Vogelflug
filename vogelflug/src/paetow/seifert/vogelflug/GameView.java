@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -20,8 +21,8 @@ public class GameView extends SurfaceView {
 	private Sprite theSprite, theSprite2;
 	
 	
-	public GameView(Context context) {
-		super(context);
+	public GameView(Context context, AttributeSet attributeSet) {
+		super(context, attributeSet);
 		theGameLoopThread = new GameLoopThread(this);
 		surfaceHolder = getHolder();                      //Surface Holder regelt die Oberflaeche und legt fest was bei Veraenderung dieser passiert
 		surfaceHolder.addCallback(new SurfaceHolder.Callback() {     
