@@ -23,7 +23,7 @@ public class Sprite {
 	private final int BMP_COLUMNS = 4;
 	private final int BMP_ROWS = 4;
 	
-	private int spriteRow = 1;
+	private int spriteRow = 0;     // von 0 - 3 fuer die jeweiligen Richtungssprites
     private int	frameZaehler = 0;
 
 	
@@ -54,12 +54,13 @@ public class Sprite {
 		x += xSpeed;
 		y += ySpeed;
 		
-		frameZaehler = ++frameZaehler % BMP_COLUMNS;  //Wert des FrameZaehlers Modulo der Spaltenzahl um zwischen 0 und 4 zu bleiben. 
+
+		frameZaehler = (++frameZaehler) % BMP_COLUMNS;  //Wert des FrameZaehlers Modulo der Spaltenzahl um zwischen 0 und 4 zu bleiben. 
 	}
 
 	
-	public void moveLeft(){spriteRow = 0;}
-	public void moveRight(){spriteRow = 1;}
+	public void moveLeft(){spriteRow = 1;}
+	public void moveRight(){spriteRow = 0;}
 	public void moveUp(){spriteRow = 2;} 
 	public void moveDown(){spriteRow = 3;}
 	
@@ -75,7 +76,6 @@ public class Sprite {
 		Rect source = new Rect (sourceX, sourceY, sourceX + width, sourceY + height);  //Rechteck mit den jeweiligen Eckkoordinaten des Sprite-Frames
 		Rect destine = new Rect(x, y, x + width, y + height);
 		 
-		bounceOff();    //Hier drin werden die Aufrufe mitgezaehlt)
 		canvas.drawBitmap(bmp, source, destine, null);
 
 	}
