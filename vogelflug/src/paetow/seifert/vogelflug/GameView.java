@@ -19,7 +19,7 @@ public class GameView extends SurfaceView {
 	private Bitmap bmpFloat;
 	private Bitmap Background;
 	private GameLoopThread theGameLoopThread;
-	private Sprite theSprite, theSprite2;
+	private Sprite theSprite;
 	
 	
 	public GameView(Context context, AttributeSet attributeSet) {
@@ -71,7 +71,7 @@ public class GameView extends SurfaceView {
 	{
 		canvas.drawBitmap(Background, 0, 0,null);
 		theSprite.onDraw(canvas);
-		theSprite2.onDraw(canvas);
+	
 
 	}
 

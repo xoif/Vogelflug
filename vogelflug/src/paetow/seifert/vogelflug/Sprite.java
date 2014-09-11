@@ -18,7 +18,7 @@ public class Sprite {
 	private GameView theGameView;
 	private final int BMP_COLUMNS = 4;
 	private final int BMP_ROWS = 4;
-	private boolean fly = true;
+
 	
 	private Bitmap bmp; 
 	private Bitmap bmpFly;
@@ -26,7 +26,7 @@ public class Sprite {
 	
 	private int spriteRow = 0;     // von 0 - 3 fuer die jeweiligen Richtungssprites
     private int frameZeiger = 0;
-	private int	frameZaehler = 0;
+	
 
 	
 	public Sprite(Bitmap bmpFly, Bitmap bmpFloat, GameView theGameView) {
@@ -46,14 +46,14 @@ public class Sprite {
 			if (spriteRow == 1){hoverLeft();} //swiped man nach rechts, obwohl man schon am rechten Rand ist, soll der Vogel abprallen und sich drehen
 		}
 		x += xSpeed;
-		frameZeiger = (++frameZaehler) % BMP_COLUMNS;  //Wert des FrameZaehlers Modulo der Spaltenzahl um zwischen 0 und 4 zu bleiben. 
+		frameZeiger = (++frameZeiger) % BMP_COLUMNS;  //Wert des FrameZaehlers Modulo der Spaltenzahl um zwischen 0 und 4 zu bleiben. 
 	    
-		while (fly){frameZaehler ++;}
+		//hier frames mitzählen
 	}
 
 	
-	public void moveLeft(){bmp = bmpFly; spriteRow = 1; xSpeed = 6;}
-	public void moveRight(){bmp = bmpFly; spriteRow = 0; xSpeed = -6;}
+	public void moveLeft(){bmp = bmpFly; spriteRow = 1; xSpeed =-6;}
+	public void moveRight(){bmp = bmpFly; spriteRow = 0; xSpeed = +6;}
 	public void moveUp(){bmp = bmpFly; spriteRow = 2;} 
 	public void moveDown(){bmp = bmpFly; spriteRow = 3;}
 	
