@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -17,6 +16,7 @@ public class GameView extends SurfaceView {
 
 	private SurfaceHolder surfaceHolder;
 	private Bitmap bmp;
+	private Bitmap Background;
 	private GameLoopThread theGameLoopThread;
 	private Sprite theSprite, theSprite2;
 	
@@ -43,8 +43,10 @@ public class GameView extends SurfaceView {
 			
 			@Override
 			public void surfaceCreated (SurfaceHolder holder) {
-				 theGameLoopThread.setRunning(true);
-	                theGameLoopThread.start();
+			theGameLoopThread.setRunning(true);
+	        theGameLoopThread.start();
+	
+				
 			}
 			
 			
@@ -59,12 +61,13 @@ public class GameView extends SurfaceView {
 		bmp = BitmapFactory.decodeResource(getResources(),R.drawable.ic_launcher);     //Bitmap einlesen
 		theSprite = new Sprite(bmp,this);
 		theSprite2 = new Sprite(bmp, this);// TODO Auto-generated constructor stub
+		Background = BitmapFactory.decodeResource(getResources(), R.drawable.backgrounddesign);
 	}
 	
 	@SuppressLint("WrongCall")
 	protected void onDraw(Canvas canvas)
 	{
-		canvas.drawColor(Color.DKGRAY);
+		canvas.drawBitmap(Background, 0, 0,null);
 		theSprite.onDraw(canvas);
 		theSprite2.onDraw(canvas);
 
