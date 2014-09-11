@@ -37,7 +37,7 @@ public class Sprite {
   this.theGameView = theGameView;
   this.bmpFloat = bmpFloat;
   this.bmpFly = bmpFly;
-  this.bmp=bmpFloat;
+  this.bmp=bmpFly;
  }
 
  public void bounceOff() {
@@ -66,7 +66,7 @@ public class Sprite {
  
  
  public void onDraw(Canvas canvas) {
-  //bounceOff();    //Randkollisionen und FrameCounter
+  bounceOff();    //Randkollisionen und FrameCounter
   int sourceX = frameZeiger * width;
   int sourceY = spriteRow * height;
   Rect source = new Rect (sourceX, sourceY, sourceX + width, sourceY + height);  //Rechteck mit den jeweiligen Eckkoordinaten des Sprite-Frames
