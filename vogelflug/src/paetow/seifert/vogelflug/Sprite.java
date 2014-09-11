@@ -1,7 +1,5 @@
 package paetow.seifert.vogelflug;
 
-import java.util.Random;
-
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -14,8 +12,7 @@ public class Sprite {
 
 	private int x = 6;
 	private int y = 6;
-	private int xSpeed;
-	private int ySpeed;
+	private int xSpeed = 6;
 	private int width;
 	private int height;
 	private Bitmap bmp;
@@ -34,10 +31,6 @@ public class Sprite {
 		this.bmp = bmp;
 		this.theGameView = theGameView;
 
-		Random rnd = new Random();
-
-		ySpeed = rnd.nextInt(10);
-		xSpeed = rnd.nextInt(10);
 	}
 
 	public void bounceOff() {
@@ -47,20 +40,13 @@ public class Sprite {
 			if (spriteRow == 0){hoverRight();}
 			if (spriteRow == 1){hoverLeft();} //swiped man nach rechts, obwohl man schon am rechten Rand ist, soll der Vogel abprallen und sich drehen
 		}
-
-		if (y <= 5 || y >= theGameView.getHeight() - height) {
-			ySpeed *= -1;
-		}
 		x += xSpeed;
-		y += ySpeed;
-		
-
 		frameZaehler = (++frameZaehler) % BMP_COLUMNS;  //Wert des FrameZaehlers Modulo der Spaltenzahl um zwischen 0 und 4 zu bleiben. 
 	}
 
 	
-	public void moveLeft(){spriteRow = 1;}
-	public void moveRight(){spriteRow = 0;}
+	public void moveLeft(){spriteRow = 1; xSpeed = 6;}
+	public void moveRight(){spriteRow = 0; xSpeed = -6;}
 	public void moveUp(){spriteRow = 2;} 
 	public void moveDown(){spriteRow = 3;}
 	
