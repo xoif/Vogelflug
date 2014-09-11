@@ -15,7 +15,8 @@ import android.view.SurfaceView;
 public class GameView extends SurfaceView {
 
 	private SurfaceHolder surfaceHolder;
-	private Bitmap bmp;
+	private Bitmap bmpFly;
+	private Bitmap bmpFloat;
 	private Bitmap Background;
 	private GameLoopThread theGameLoopThread;
 	private Sprite theSprite, theSprite2;
@@ -58,9 +59,10 @@ public class GameView extends SurfaceView {
 			}
 		});
 		
-		bmp = BitmapFactory.decodeResource(getResources(),R.drawable.alienspritered);     //Bitmap einlesen
-		theSprite = new Sprite(bmp,this);
-		theSprite2 = new Sprite(bmp, this);// TODO Auto-generated constructor stub
+		bmpFly = BitmapFactory.decodeResource(getResources(),R.drawable.alienspritegreen);     //Bitmap einlesen
+		bmpFloat = BitmapFactory.decodeResource(getResources(), R.drawable.alienspritered);
+		theSprite = new Sprite(bmpFly,bmpFloat,this);
+
 		Background = BitmapFactory.decodeResource(getResources(), R.drawable.backgrounddesign);
 	}
 	
