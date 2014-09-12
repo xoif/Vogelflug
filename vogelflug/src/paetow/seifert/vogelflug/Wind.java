@@ -18,7 +18,7 @@ public class Wind {
 	public final int flowSpeed = 60;
 	public Paint windStyle;
 	public boolean animationEnded;
-	BlurMaskFilter Filter;
+	public BlurMaskFilter Filter;
 	public Random random;
 
 	
@@ -38,7 +38,7 @@ public class Wind {
 
 	}
 
-	public void colorize() {
+	public void moove() {
 		if (animationEnded) {   //erstellt neuen Windstrahl mit neuen Koordinaten
 			xValue = random.nextInt(theGameView.getWidth());
 			yEnd = 100+ random.nextInt(theGameView.getHeight());
@@ -67,9 +67,11 @@ public class Wind {
 		}
 	}
 
+
+	
 	public void onDraw(Canvas canvas) {
 
-		colorize();
+		moove();
 		canvas.drawLine(xValue, yStart, xValue, yEnd, windStyle);
 
 	}

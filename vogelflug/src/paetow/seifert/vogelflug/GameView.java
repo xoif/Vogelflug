@@ -20,7 +20,7 @@ public class GameView extends SurfaceView {
 	private Bitmap Background;
 	private GameLoopThread theGameLoopThread;
 	private Sprite theSprite;
-	private Wind theWind;
+	private Wind theWind, theWind2;
 	
 	
 	public GameView(Context context, AttributeSet attributeSet) {
@@ -64,6 +64,7 @@ public class GameView extends SurfaceView {
 		bmpFloat = BitmapFactory.decodeResource(getResources(), R.drawable.alienspritered);
 		theSprite = new Sprite(bmpFly,bmpFloat,this);
         theWind = new Wind(this);
+        
 		
 		Background = BitmapFactory.decodeResource(getResources(), R.drawable.backgrounddesign);
 	}
@@ -74,6 +75,7 @@ public class GameView extends SurfaceView {
 		canvas.drawBitmap(Background, 0, 0,null);
 		theSprite.onDraw(canvas);
 	    theWind.onDraw(canvas);
+	   // theWind2.onDraw(canvas); warum laesst sich keine zweite Instanz erstellen?
 
 	}
 
