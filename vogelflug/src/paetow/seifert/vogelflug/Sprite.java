@@ -50,7 +50,7 @@ public class Sprite {
   x += xSpeed;
   frameZeiger = (++frameZeiger) % BMP_COLUMNS;  //Wert des FrameZaehlers Modulo der Spaltenzahl um zwischen 0 und 4 zu bleiben. 
      
-  //while (fly){frameZaehler ++;}
+
  }
 
  
