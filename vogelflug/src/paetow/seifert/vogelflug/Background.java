@@ -9,6 +9,7 @@ private Bitmap background;
 private GameView theGameView;
 private int yScroll = 0;
 private Rect source, destine;
+private boolean bottom = false;
 
 
 public Background(Bitmap sourceBackground, GameView gameView) {
@@ -23,7 +24,11 @@ public void scroll()
 source = new Rect(0, yScroll, theGameView.getWidth(), yScroll + theGameView.getHeight());	
 destine = new Rect(0, 0, theGameView.getWidth(), theGameView.getHeight());
 
+if (yScroll + theGameView.getHeight() < background.getHeight()){
 yScroll++;
+}
+else {bottom = true;}
+	
 }
 
 public void onDraw(Canvas canvas)
