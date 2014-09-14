@@ -135,9 +135,13 @@ public class GameView extends SurfaceView {
 		      else {
 		       if (deltaY > 0) {
 		        // move down
+		    	  // theSprite.moveDown();
 		        
 		       } else {
 		        // move up
+		    	  // theSprite.moveUp();
+		    	   
+		    	   
 		        
 		       }
 		      }
