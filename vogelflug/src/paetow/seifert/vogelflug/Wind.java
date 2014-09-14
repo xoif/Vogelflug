@@ -71,6 +71,7 @@ public class Wind {
 	
 	public void onDraw(Canvas canvas) {
 
+		
 		moove();
 		canvas.drawLine(xValue, yStart, xValue, yEnd, windStyle);
 

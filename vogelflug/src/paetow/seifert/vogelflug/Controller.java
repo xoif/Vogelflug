@@ -2,8 +2,9 @@ package paetow.seifert.vogelflug;
 
 import android.view.MotionEvent;
 
-public class Controller {
 
+public class Controller {
+			
 		 float initialX = 0;
 		 float initialY = 0;
 		 float lastX = 0;
@@ -11,6 +12,15 @@ public class Controller {
 		 float deltaX =0;
 		 float deltaY=0;
 		 final int minDistance = 100;
+		 Sprite theSprite;
+		 GameView theGameview;
+		 
+		 Controller(Sprite theSprite, GameView theGameView){
+			 
+			 super();
+			 this.theSprite = theSprite;
+			 this.theGameview = theGameView;
+		 }
 		 
 		 public boolean onTouchEvent(MotionEvent event) {
 
@@ -45,10 +55,11 @@ public class Controller {
 
 		       if (deltaX > 0) {
 		        // move right
+		    	  theSprite.moveRight();
 		        
 		       } else {
 		        // move left
-		        
+		    	   theSprite.moveLeft();
 		       }
 		      }
 
