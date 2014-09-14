@@ -15,7 +15,7 @@ public class Sprite {
 	private int[] posX = new int[4];
 	private int countArray;
 	private int y;
-	private int xSpeed = 20;
+	private int xSpeed = 30;
 
 	private int animate;
 	boolean bounced = false;
@@ -46,12 +46,12 @@ public class Sprite {
 	public void bounceOff() {
 		if (countArray >= posX.length) {
 
-			if ((actualPos < theGameView.getWidth() - width - xSpeed)
+			if ((actualPos < theGameView.getWidth() - 2 * width - xSpeed)
 					&& bounced == false) {
 				actualPos += xSpeed;
 			} else {
 				bounced = true;
-				if (actualPos > posX[countArray - 2]) {
+				if (actualPos > posX[3]) {
 					actualPos -= xSpeed;
 				} else {
 					animate = 0;
@@ -77,7 +77,7 @@ public class Sprite {
 	}
 
 	public void moveRight() {
-		bmp=bmpFly;
+		bmp = bmpFly;
 		spriteRow = 1;
 		animate = 1;
 		if (countArray < posX.length) {
@@ -108,8 +108,8 @@ public class Sprite {
 	}
 
 	public void hoverLeft() {
-		bmp = bmpFloat;
-		spriteRow = 2;
+		bmp = bmpFly;
+		spriteRow = 1;
 	}
 
 	public void hoverRight() {
@@ -121,8 +121,9 @@ public class Sprite {
 		if (actualPos < posX[countArray]) {
 			actualPos += xSpeed;
 		} else {
-			animate = 0;
+			bmp=bmpFloat;
 			hoverRight();
+			animate = 0;
 		}
 	}
 
@@ -131,24 +132,27 @@ public class Sprite {
 			actualPos -= xSpeed;
 
 		} else {
-			animate = 0;
+			bmp=bmpFloat;
 			hoverLeft();
+			animate = 0;
 		}
 
 	}
 
 	public void onDraw(Canvas canvas) {
 
-		posX[0] = theGameView.getWidth() / 8;
-		posX[1] = theGameView.getWidth() / 4 + theGameView.getWidth() / 8;
-		posX[2] = 2 * theGameView.getWidth() / 4 + theGameView.getWidth() / 8;
-		posX[3] = 3 * theGameView.getWidth() / 4 + theGameView.getWidth() / 8;
+		posX[0] = theGameView.getWidth() / 15;
+		posX[1] = theGameView.getWidth() / 4 + 20;
+		posX[2] = 2 * theGameView.getWidth() / 4 + 30;
+		posX[3] = 3 * theGameView.getWidth() / 4;
 		y = theGameView.getHeight() / 2;
 
 		frameZeiger = (++frameZeiger) % BMP_COLUMNS;
 
 		switch (animate) {
 		case 0: {
+			bmp = bmpFloat;
+			spriteRow = 2;
 
 		}
 		case 1: {
@@ -159,7 +163,7 @@ public class Sprite {
 			}
 		}
 		case 2: {
-			if (countArray >= 0) {
+			if (countArray >= 0 && countArray < posX.length) {
 				goLeft();
 			} else {
 				bounceOff();
