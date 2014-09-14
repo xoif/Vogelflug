@@ -18,11 +18,12 @@ public class GameView extends SurfaceView {
 	private SurfaceHolder surfaceHolder;
 	private Bitmap bmpFly;
 	private Bitmap bmpFloat;
-	private Bitmap Background;
+	private Bitmap sourceBackground;
 	private GameLoopThread theGameLoopThread;
 	private Sprite theSprite;
 	private Controller theController;
 	private Wind theWind, theWind2;
+	private Background theBackground;
 	
 	
 	public GameView(Context context, AttributeSet attributeSet) {
@@ -67,13 +68,14 @@ public class GameView extends SurfaceView {
 		theSprite = new Sprite(bmpFly,bmpFloat,this);
 		theController = new Controller(theSprite,this);
         theWind = new Wind(this);
-		Background = BitmapFactory.decodeResource(getResources(), R.drawable.backgrounddesign);
+		sourceBackground = BitmapFactory.decodeResource(getResources(), R.drawable.grand);
+		theBackground = new Background(sourceBackground,this);
 	}
 	
 	@SuppressLint("WrongCall")
 	protected void onDraw(Canvas canvas)
 	{
-		canvas.drawBitmap(Background, 0, 0,null);
+		theBackground.onDraw(canvas);
 		theSprite.onDraw(canvas);
 	    theWind.onDraw(canvas);
 	   // theWind2.onDraw(canvas); warum laesst sich keine zweite Instanz erstellen?

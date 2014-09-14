@@ -1,9 +1,36 @@
 package paetow.seifert.vogelflug;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 
 public class Background {
-Bitmap Background;
+Bitmap background;
+GameView theGameview;
+
+
+public Background(Bitmap sourceBackground, GameView gameView) {
+	this.background = sourceBackground;
+	this.theGameview = gameView;
+}
+
+
+
+public void scroll(){}
+
+public void onDraw(Canvas canvas)
+{
+scroll();
+canvas.drawBitmap(background, 0, 0,null);
+}
+
+
+
+
+
+
+
+
+
 
 
 /* vielleicht kann man ueber die Paint-Klasse beim Bewegen des Hintergrundbilds ne Art 
