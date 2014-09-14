@@ -2,25 +2,35 @@ package paetow.seifert.vogelflug;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 
 public class Background {
-Bitmap background;
-GameView theGameview;
+private Bitmap background;
+private GameView theGameView;
+private int yScroll = 0;
+private Rect source, destine;
 
 
 public Background(Bitmap sourceBackground, GameView gameView) {
 	this.background = sourceBackground;
-	this.theGameview = gameView;
+	this.theGameView = gameView;
 }
 
 
 
-public void scroll(){}
+public void scroll()
+{
+source = new Rect(0, yScroll, theGameView.getWidth(), yScroll + theGameView.getHeight());	
+destine = new Rect(0, 0, theGameView.getWidth(), theGameView.getHeight());
+
+yScroll++;
+}
 
 public void onDraw(Canvas canvas)
 {
 scroll();
-canvas.drawBitmap(background, 0, 0,null);
+canvas.drawBitmap(background, source, destine,null);
+
 }
 
 
