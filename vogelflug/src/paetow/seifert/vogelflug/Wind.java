@@ -32,7 +32,7 @@ public class Wind {
 		Filter = new BlurMaskFilter(15, Blur.NORMAL);
 		windStyle.setMaskFilter(Filter);
 		windStyle.setAntiAlias(true);
-		windStyle.setStrokeWidth(12f);
+		windStyle.setStrokeWidth(6f);
 		windStyle.setStyle(Paint.Style.STROKE);
 		windStyle.setStrokeJoin(Paint.Join.ROUND);
 
@@ -49,7 +49,7 @@ public class Wind {
 
 		//TransparenzGradient
 		LinearGradient Gradient = new LinearGradient(xValue, yStart, xValue,
-				yEnd, Color.argb(200, 255, 50, 50), Color.argb(255, 255, 255,
+				yEnd, Color.argb(0, 255, 255, 255), Color.argb(200, 255, 255,
 						255), Shader.TileMode.MIRROR);
 		windStyle.setShader(Gradient);
 
@@ -74,6 +74,7 @@ public class Wind {
 		
 		moove();
 		canvas.drawLine(xValue, yStart, xValue, yEnd, windStyle);
+		canvas.drawLine(xValue*(float)1.35, yStart*(float)1.35, xValue*(float)1.35, yEnd*(float)1.35, windStyle);
 
 	}
 
