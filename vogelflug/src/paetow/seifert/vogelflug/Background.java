@@ -8,7 +8,8 @@ public class Background {
 private Bitmap background;
 private GameView theGameView;
 private int yScroll = 0;
-private Rect source, destine;
+private Rect source, source2, source3, destine;
+@SuppressWarnings("unused")
 private boolean bottom = false;
 
 
@@ -22,9 +23,11 @@ public Background(Bitmap sourceBackground, GameView gameView) {
 public void scroll()
 {
 source = new Rect(0, yScroll, theGameView.getWidth(), yScroll + theGameView.getHeight());	
+source2 = new Rect(0, yScroll-background.getHeight(), theGameView.getWidth(), yScroll-background.getHeight() + theGameView.getHeight());
+source3 = new Rect(0, yScroll-2*background.getHeight(), theGameView.getWidth(), yScroll-2*background.getHeight() + theGameView.getHeight());
 destine = new Rect(0, 0, theGameView.getWidth(), theGameView.getHeight());
 
-if (yScroll + theGameView.getHeight() < background.getHeight()){
+if (yScroll + theGameView.getHeight() < 2*background.getHeight()){
 yScroll++;
 }
 else {bottom = true;}
@@ -35,7 +38,8 @@ public void onDraw(Canvas canvas)
 {
 scroll();
 canvas.drawBitmap(background, source, destine,null);
-
+canvas.drawBitmap(background, source2, destine,null);
+canvas.drawBitmap(background, source3, destine,null);
 }
 
 
