@@ -10,8 +10,8 @@ public class Wind {
 
 	
 	public Wind(GameView theGameView) {
-		windBlow = new WindBlow (theGameView.getWidth(),theGameView.getHeight());
-        windBlow2 = new WindBlow (theGameView.getWidth(),theGameView.getHeight());
+		windBlow = new WindBlow (theGameView);
+        windBlow2 = new WindBlow (theGameView);
 
 	}
 
