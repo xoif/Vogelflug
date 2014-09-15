@@ -11,6 +11,7 @@ public class GameLoopThread extends Thread{
 private GameView theView;
 private boolean isRunning = false;
 static final long FPS = 20;
+Canvas theCanvas;
 
 
 
@@ -33,7 +34,7 @@ long startTime, sleepTime;
 
 while (isRunning)                      //solange der Thread laeuft
 {
-Canvas theCanvas = null;                 //ein leeres Canvas-Objekt wird erstellt bzw. wird dessen Inhalt geloescht
+//Canvas theCanvas = null;                 //ein leeres Canvas-Objekt wird erstellt bzw. wird dessen Inhalt geloescht
 startTime = System.currentTimeMillis();
 try {
 theCanvas = theView.getHolder().lockCanvas();   //der Canvas der GameView-Klasse wird geholt

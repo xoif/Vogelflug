@@ -74,7 +74,7 @@ public class Wind {
 		
 		moove();
 		canvas.drawLine(xValue, yStart, xValue, yEnd, windStyle);
-		canvas.drawLine(xValue*(float)1.35, yStart*(float)1.35, xValue*(float)1.35, yEnd*(float)1.35, windStyle);
+		
 
 	}
 
