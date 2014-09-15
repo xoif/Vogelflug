@@ -3,8 +3,6 @@ package paetow.seifert.vogelflug;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Rect;
 
 @SuppressLint("DrawAllocation")
@@ -14,11 +12,14 @@ public class Sprite {
 	private int actualPos;
 	private int[] posX = new int[4];
 	private int countArray;
-	private int y;
-	private int xSpeed = 30;
+	private int y, actualY, yUp, yDown;
+	private int xSpeed = 45;
+	private int ySpeed = 30;
 
-	private int animate;
-	boolean bounced = false;
+	private int animateVer, animateHor;
+	boolean bouncedVer = false;
+	boolean bouncedHor = false;
+	boolean first = true;
 
 	private Bitmap bmp;
 	private Bitmap bmpFly; // Bitmap einlesen
@@ -28,7 +29,7 @@ public class Sprite {
 
 	private final int BMP_COLUMNS = 4;
 	private final int BMP_ROWS = 4;
-	private int spriteRow = 0; // von 0 - 3 fuer die jeweiligen Richtungssprites
+	private int spriteRow = 2; // von 0 - 3 fuer die jeweiligen Richtungssprites
 	private int frameZeiger = 0;
 
 	public Sprite(Bitmap bmpFly, Bitmap bmpFloat, GameView theGameView) {
@@ -43,52 +44,21 @@ public class Sprite {
 		countArray = 0;
 	}
 
-	public void bounceOff() {
-		if (countArray >= posX.length) {
-
-			if ((actualPos < theGameView.getWidth() - 2 * width - xSpeed)
-					&& bounced == false) {
-				actualPos += xSpeed;
-			} else {
-				bounced = true;
-				if (actualPos > posX[3]) {
-					actualPos -= xSpeed;
-				} else {
-					animate = 0;
-					countArray -= 1;
-					bounced = false;
-				}
-			}
-		} else {
-			if ((actualPos > xSpeed) && bounced == false) {
-				actualPos -= xSpeed;
-			} else {
-				bounced = true;
-				if (actualPos < posX[countArray + 1]) {
-					actualPos += xSpeed;
-				} else {
-					animate = 0;
-					countArray += 1;
-					bounced = false;
-				}
-			}
-		}
-
-	}
-
 	public void moveRight() {
-		bmp = bmpFly;
+		bmp=bmpFly;
 		spriteRow = 1;
-		animate = 1;
+		animateHor = 1;
+		bouncedHor = false;
 		if (countArray < posX.length) {
 			countArray += 1;
 		}
 	}
 
 	public void moveLeft() {
-		bmp = bmpFly;
+		bmp=bmpFly;
 		spriteRow = 0;
-		animate = 2;
+		animateHor = 2;
+		bouncedHor = false;
 		if (countArray > -1) {
 			countArray -= 1;
 		}
@@ -98,86 +68,146 @@ public class Sprite {
 	public void moveUp() {
 		bmp = bmpFly;
 		spriteRow = 2;
-		animate = 3;
+		animateVer = 3;
+		bouncedVer = false;
 	}
 
 	public void moveDown() {
 		bmp = bmpFly;
 		spriteRow = 3;
-		animate = 4;
-	}
-
-	public void hoverLeft() {
-		bmp = bmpFly;
-		spriteRow = 1;
-	}
-
-	public void hoverRight() {
-		bmp = bmpFloat;
-		spriteRow = 1;
+		animateVer = 4;
+		bouncedVer = false;
 	}
 
 	public void goRight() {
 		if (actualPos < posX[countArray]) {
 			actualPos += xSpeed;
 		} else {
-			bmp=bmpFloat;
-			hoverRight();
-			animate = 0;
+			animateHor = 0;
 		}
 	}
 
 	public void goLeft() {
 		if (actualPos > posX[countArray]) {
 			actualPos -= xSpeed;
-
 		} else {
-			bmp=bmpFloat;
-			hoverLeft();
-			animate = 0;
+			animateHor = 0;
+		}
+	}
+	
+	public void bounceOff() {
+		if (countArray >= posX.length) {
+
+			if ((actualPos < theGameView.getWidth() - 2 * width - xSpeed)
+					&& bouncedHor == false) {
+				actualPos += xSpeed;
+			} else {
+				bouncedHor = true;
+				spriteRow = 0;
+				if (actualPos > posX[3]) {
+					actualPos -= xSpeed;
+				} else {
+					animateHor = 0;
+					countArray -= 1;
+					bouncedHor = false;
+				}
+			}
+		} else {
+			if ((actualPos > xSpeed) && bouncedHor == false) {
+				actualPos -= xSpeed;
+			} else {
+				bouncedHor = true;
+				spriteRow = 1;
+				if (actualPos < posX[countArray + 1]) {
+					actualPos += xSpeed;
+				} else {
+					animateHor = 0;
+					countArray += 1;
+					bouncedHor = false;
+				}
+			}
+		}
+	}
+
+	public void goUp() {
+		if (actualY > yUp && bouncedVer == false) {
+			actualY -= ySpeed;
+		} else {
+			bouncedVer = true;
+			spriteRow = 3;
+			if (actualY < y) {
+				actualY += ySpeed;
+			} else {
+				animateVer = 0;
+				bouncedVer = false;
+			}
 		}
 
 	}
 
-	public void onDraw(Canvas canvas) {
+	public void goDown() {
+		if (actualY < yDown && bouncedVer == false) {
+			actualY += ySpeed;
+		} else {
+			bouncedVer = true;
+			spriteRow = 2;
+			if (actualY > y) {
+				actualY -= ySpeed;
+			} else {
+				animateVer = 0;
+				bouncedVer = false;
+			}
+		}
+	}
 
-		posX[0] = theGameView.getWidth() / 15;
-		posX[1] = theGameView.getWidth() / 4 + 20;
-		posX[2] = 2 * theGameView.getWidth() / 4 + 30;
-		posX[3] = 3 * theGameView.getWidth() / 4;
-		y = theGameView.getHeight() / 2;
+	public void onDraw(Canvas canvas) {
+		if (first == true) {
+			posX[0] = theGameView.getWidth() / 15;
+			posX[1] = theGameView.getWidth() / 4 + 20;
+			posX[2] = 2 * theGameView.getWidth() / 4 + 30;
+			posX[3] = 3 * theGameView.getWidth() / 4;
+			y = theGameView.getHeight() / 2;
+			actualY = y;
+			yUp = y - 300;
+			yDown = y + 300;
+			first = false;
+		}
 
 		frameZeiger = (++frameZeiger) % BMP_COLUMNS;
-
-		switch (animate) {
-		case 0: {
+		
+		if((animateHor == 0)&&(animateVer == 0)){
 			bmp = bmpFloat;
 			spriteRow = 2;
-
 		}
-		case 1: {
+		
+		if(animateHor == 1) {
 			if (countArray < posX.length) {
 				goRight();
 			} else {
 				bounceOff();
 			}
 		}
-		case 2: {
+		if(animateHor == 2) {
 			if (countArray >= 0 && countArray < posX.length) {
 				goLeft();
 			} else {
 				bounceOff();
 			}
 		}
+		if(animateVer == 3) {
+			goUp();
 		}
-
+		if(animateVer == 4) {
+			goDown();
+		}
+		
 		int sourceX = frameZeiger * width;
 		int sourceY = spriteRow * height;
 		Rect source = new Rect(sourceX, sourceY, sourceX + width, sourceY
 				+ height); // Rechteck mit den jeweiligen Eckkoordinaten des
 							// Sprite-Frames
-		Rect destine = new Rect(actualPos + (width / 2), y, actualPos
-				+ (5 * width / 2), y + (2 * height));
+		Rect destine = new Rect(actualPos + (width / 2), actualY, actualPos
+				+ (5 * width / 2), actualY + (2 * height));
 
 		canvas.drawBitmap(bmp, source, destine, null);
 

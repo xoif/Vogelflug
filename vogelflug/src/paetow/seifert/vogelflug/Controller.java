@@ -66,11 +66,11 @@ public class Controller {
 			      else {
 			       if (deltaY > 0) {
 			        // move down
-			    	  // theSprite.moveDown();
+			    	 theSprite.moveDown();
 			        
 			       } else {
 			        // move up
-			    	  // theSprite.moveUp();
+			    	  theSprite.moveUp();
 			    	   
 			    	   
 			        

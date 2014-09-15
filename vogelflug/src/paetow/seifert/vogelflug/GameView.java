@@ -22,7 +22,7 @@ public class GameView extends SurfaceView {
 	private GameLoopThread theGameLoopThread;
 	private Sprite theSprite;
     private Controller theController;
-	private Wind theWind, theWind2;
+	private Wind theWind;
 	private Background theBackground;
 	
 	
