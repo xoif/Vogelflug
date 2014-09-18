@@ -31,9 +31,10 @@ public final class R {
         public static final int leftlong=0x7f020006;
         public static final int leftshort=0x7f020007;
         public static final int leftwall=0x7f020008;
-        public static final int rightlong=0x7f020009;
-        public static final int rightshort=0x7f02000a;
-        public static final int rightwall=0x7f02000b;
+        public static final int oachkatzl=0x7f020009;
+        public static final int rightlong=0x7f02000a;
+        public static final int rightshort=0x7f02000b;
+        public static final int rightwall=0x7f02000c;
     }
     public static final class id {
         public static final int action_settings=0x7f080004;
