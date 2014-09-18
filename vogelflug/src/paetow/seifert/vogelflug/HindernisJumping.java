@@ -16,9 +16,9 @@ public class HindernisJumping extends HindernisAbstract{
 	public HindernisJumping(Bitmap bmp, GameView theGameView) {
 		super(theGameView);
 		this.bmp = bmp;
-		this.xPos= 50;
-		this.yPos= 0;
-		this.xSpeed = 0;
+		this.xPos= 1100;
+		this.yPos= 100;
+		this.xSpeed = -20;
 		this.ySpeed = 10;
 		this.width = bmp.getWidth() / BMP_COLUMNS;
 		this.height = bmp.getHeight() / BMP_ROWS;
@@ -35,28 +35,34 @@ public class HindernisJumping extends HindernisAbstract{
 	
 	@Override
 	public void onDraw(Canvas canvas) {
-		
-		if (spriteRow == 0){xPos = 1200;}
-		else {xPos = -3;}
-		
-		frameZeiger = (++frameZeiger) % BMP_COLUMNS;
-		
-		
-		int sourceX = frameZeiger * width;
-		int sourceY = spriteRow * height;
-				
+
 		if(draw == true){
+			
+			int sourceX = frameZeiger * width;
+			int sourceY = spriteRow * height;
+			
+			
 			source = new Rect(sourceX, sourceY, sourceX + width, sourceY
 					+ height);
 			
-			destine = new Rect(xPos, theGameView.getHeight() - yPos,  theGameView.getWidth()/8,
-					theGameView.getHeight() + height - yPos);
+			destine = new Rect(xPos, yPos + height,  xPos + width,
+					yPos);
+			
+			frameZeiger = (++frameZeiger) % BMP_COLUMNS;
+		
 			canvas.drawBitmap(bmp, source, destine, null);
 			yPos +=ySpeed;
-			if(yPos >= theGameView.getHeight()+100){
+			xPos +=xSpeed; 
+			if(xPos >= theGameView.getWidth()+100){
 				draw = false;
-				yPos = 0;
+				yPos = 100;
+				xPos = 0;
+				xSpeed = 20;
+				spriteRow = 1;
+
 	}
+			if (xPos <= -100){draw = false; yPos = 100; xPos = theGameView.getWidth();xSpeed = -20; spriteRow = 0;} 
+		
 		}
 	}
 }

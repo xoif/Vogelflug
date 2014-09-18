@@ -18,7 +18,7 @@ public class GameView extends SurfaceView {
 	private Bitmap bmpFloat;
 	private Bitmap sourceBackground;
 	private Bitmap sourceWallLeft, sourceWallRight;
-	private Bitmap branchShortLeft, branchShortRight, branchLongLeft, branchLongRight;
+	private Bitmap branchShortLeft, branchShortRight, branchLongLeft, branchLongRight, oachKatzl;
 	private GameLoopThread theGameLoopThread;
 	private Sprite theSprite;
 	private Controller theController;
@@ -87,9 +87,10 @@ public class GameView extends SurfaceView {
 
 		branchLongLeft = BitmapFactory.decodeResource(getResources(), R.drawable.leftlong);
 		branchLongRight = BitmapFactory.decodeResource(getResources(), R.drawable.rightlong);
+		oachKatzl = BitmapFactory.decodeResource(getResources(), R.drawable.oachkatzl);
 		
 		theHindernis = new HindernisManager(branchShortLeft,branchShortRight, branchLongLeft, 
-				branchLongRight, this);
+				branchLongRight, oachKatzl, this);
 
 	}
 

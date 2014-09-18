@@ -21,9 +21,10 @@ public class HindernisManager {
 	private HindernisLeftShort linkskurz;
 	private HindernisRightLong rechtslang;
 	private HindernisRightShort rechtskurz;
+	private HindernisJumping sprung;
 
 	public HindernisManager(Bitmap bmpShortLeft, Bitmap bmpShortRight, Bitmap bmpLongLeft, 
-			Bitmap bmpLongRight, GameView theGameView) {
+			Bitmap bmpLongRight, Bitmap sprung, GameView theGameView) {
 		this.theGameView = theGameView;
 		this.test1 = bmpShortLeft.getWidth();
 		this.test2 = bmpShortLeft.getHeight();
@@ -32,6 +33,7 @@ public class HindernisManager {
 		linkskurz = new HindernisLeftShort(bmpShortLeft,theGameView);
 		rechtslang = new HindernisRightLong(bmpLongRight, theGameView);
 		rechtskurz = new HindernisRightShort(bmpShortRight, theGameView);
+		this.sprung = new HindernisJumping (sprung, theGameView);
 	}
 
 	public void change() {
@@ -55,6 +57,7 @@ public class HindernisManager {
 		if(change == 6|| change ==10){
 			linkslang.setdraw();
 			rechtskurz.setdraw();
+			sprung.setdraw();
 		}
 		
 	}
@@ -76,6 +79,7 @@ public class HindernisManager {
 		linkskurz.onDraw(canvas);
 		rechtslang.onDraw(canvas);
 		rechtskurz.onDraw(canvas);
+		sprung.onDraw(canvas);
 	
 	}
 
