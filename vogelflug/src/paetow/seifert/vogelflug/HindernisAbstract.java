@@ -7,6 +7,8 @@ import android.graphics.Rect;
 abstract class HindernisAbstract {
 	
 	protected GameView theGameView;
+	protected Sprite theSprite;
+	protected Rect spritePos;
 	protected Bitmap bmp, wall;
 	protected int xPos, yPos;
 	protected int xSpeed, ySpeed;
@@ -17,7 +19,7 @@ abstract class HindernisAbstract {
 
 	public HindernisAbstract(GameView theGameView){
 		
-		this.theGameView = theGameView;		
+		this.theGameView = theGameView;	
 	}
 	
 	public abstract void onDraw(Canvas canvas);
