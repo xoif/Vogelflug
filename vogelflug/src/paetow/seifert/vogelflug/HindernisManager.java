@@ -5,18 +5,17 @@ import java.util.Random;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 
 public class HindernisManager {
 
+	@SuppressWarnings("unused")
 	private GameView theGameView;
 
 	Random Zufall = new Random();
 	int change;
 	int i = 0;
 	int test1, test2;
-
+	
 	private HindernisLeftLong linkslang;
 	private HindernisLeftShort linkskurz;
 	private HindernisRightLong rechtslang;
@@ -24,16 +23,16 @@ public class HindernisManager {
 	private HindernisJumping sprung;
 
 	public HindernisManager(Bitmap bmpShortLeft, Bitmap bmpShortRight, Bitmap bmpLongLeft, 
-			Bitmap bmpLongRight, Bitmap sprung, GameView theGameView) {
+			Bitmap bmpLongRight, Bitmap sprung, Sprite theSprite, GameView theGameView) {
 		this.theGameView = theGameView;
 		this.test1 = bmpShortLeft.getWidth();
 		this.test2 = bmpShortLeft.getHeight();
 		
-		linkslang = new HindernisLeftLong(bmpLongLeft, theGameView);
-		linkskurz = new HindernisLeftShort(bmpShortLeft,theGameView);
-		rechtslang = new HindernisRightLong(bmpLongRight, theGameView);
-		rechtskurz = new HindernisRightShort(bmpShortRight, theGameView);
-		this.sprung = new HindernisJumping (sprung, theGameView);
+		linkslang = new HindernisLeftLong(bmpLongLeft, theSprite, theGameView);
+		linkskurz = new HindernisLeftShort(bmpShortLeft,theSprite, theGameView);
+		rechtslang = new HindernisRightLong(bmpLongRight, theSprite, theGameView);
+		rechtskurz = new HindernisRightShort(bmpShortRight, theSprite, theGameView);
+		this.sprung = new HindernisJumping (sprung, theSprite, theGameView);
 	}
 
 	public void change() {
@@ -70,10 +69,6 @@ public class HindernisManager {
 			change();
 			i = 0;
 		}
-		Paint farbe = new Paint();
-		farbe.setColor(Color.WHITE);
-		farbe.setTextSize(80);
-		canvas.drawText("testX"+test1+"testY"+(test2), 0, 100, farbe);
 		
 		linkslang.onDraw(canvas);	
 		linkskurz.onDraw(canvas);

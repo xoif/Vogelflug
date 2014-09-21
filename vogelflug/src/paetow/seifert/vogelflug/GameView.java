@@ -90,7 +90,7 @@ public class GameView extends SurfaceView {
 		oachKatzl = BitmapFactory.decodeResource(getResources(), R.drawable.oachkatzl);
 		
 		theHindernis = new HindernisManager(branchShortLeft,branchShortRight, branchLongLeft, 
-				branchLongRight, oachKatzl, this);
+				branchLongRight, oachKatzl, theSprite, this);
 
 	}
 

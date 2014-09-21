@@ -1,12 +1,15 @@
 package paetow.seifert.vogelflug;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class HindernisRightShort extends HindernisAbstract{
 
-	public HindernisRightShort(Bitmap bmp,GameView theGameView) {
+	public HindernisRightShort(Bitmap bmp, Sprite theSprite, GameView theGameView) {
 		super(theGameView);
 		this.bmp=bmp;
 		this.xPos= 50;
@@ -16,12 +19,14 @@ public class HindernisRightShort extends HindernisAbstract{
 		this.width = bmp.getWidth();
 		this.height = bmp.getHeight();
 		this.draw = false;
+		this.theSprite = theSprite;
+		this.destine = new Rect();
 	}
 	public void setdraw(){
 		draw=true;
 	}
 	
-	public void onDraw(Canvas canvas){
+	@SuppressLint("DrawAllocation") public void onDraw(Canvas canvas){
 		if(draw == true){
 			source = new Rect(0, 0, height, width);
 			destine = new Rect(theGameView.getWidth()-width/3-xPos, theGameView.getHeight() - yPos, theGameView.getWidth() - xPos,
@@ -32,6 +37,12 @@ public class HindernisRightShort extends HindernisAbstract{
 				draw = false;
 				yPos = 0;
 			}
+		}
+		if(Rect.intersects(theSprite.getDestine(), destine)){
+			Paint farbe = new Paint();
+			farbe.setColor(Color.RED);
+			farbe.setTextSize(150);
+			canvas.drawText("Verloren", 50, 100, farbe);
 		}
 	}
 	

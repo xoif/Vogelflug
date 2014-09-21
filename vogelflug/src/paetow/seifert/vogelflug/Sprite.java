@@ -9,7 +9,7 @@ import android.graphics.Rect;
 public class Sprite {
 
 	private GameView theGameView;
-	private int actualPos;
+	private int actualX;
 	private int[] posX = new int[4];
 	private int countArray;
 	private int y, actualY, yUp, yDown;
@@ -26,6 +26,7 @@ public class Sprite {
 	private Bitmap bmpFloat;
 	private int width;
 	private int height;
+	private Rect source, destine;
 
 	private final int BMP_COLUMNS = 4;
 	private final int BMP_ROWS = 4;
@@ -40,7 +41,7 @@ public class Sprite {
 		this.bmpFloat = bmpFloat;
 		this.bmpFly = bmpFly;
 		this.bmp = bmpFloat;
-		actualPos = posX[0];
+		actualX = posX[0];
 		countArray = 0;
 	}
 
@@ -80,16 +81,16 @@ public class Sprite {
 	}
 
 	public void goRight() {
-		if (actualPos < posX[countArray]) {
-			actualPos += xSpeed;
+		if (actualX < posX[countArray]) {
+			actualX += xSpeed;
 		} else {
 			animateHor = 0;
 		}
 	}
 
 	public void goLeft() {
-		if (actualPos > posX[countArray]) {
-			actualPos -= xSpeed;
+		if (actualX > posX[countArray]) {
+			actualX -= xSpeed;
 		} else {
 			animateHor = 0;
 		}
@@ -98,14 +99,14 @@ public class Sprite {
 	public void bounceOff() {
 		if (countArray >= posX.length) {
 
-			if ((actualPos < theGameView.getWidth() - 2 * width - xSpeed)
+			if ((actualX < theGameView.getWidth() - 2 * width - xSpeed)
 					&& bouncedHor == false) {
-				actualPos += xSpeed;
+				actualX += xSpeed;
 			} else {
 				bouncedHor = true;
 				spriteRow = 0;
-				if (actualPos > posX[3]) {
-					actualPos -= xSpeed;
+				if (actualX > posX[3]) {
+					actualX -= xSpeed;
 				} else {
 					animateHor = 0;
 					countArray -= 1;
@@ -113,13 +114,13 @@ public class Sprite {
 				}
 			}
 		} else {
-			if ((actualPos > xSpeed) && bouncedHor == false) {
-				actualPos -= xSpeed;
+			if ((actualX > xSpeed) && bouncedHor == false) {
+				actualX -= xSpeed;
 			} else {
 				bouncedHor = true;
 				spriteRow = 1;
-				if (actualPos < posX[countArray + 1]) {
-					actualPos += xSpeed;
+				if (actualX < posX[countArray + 1]) {
+					actualX += xSpeed;
 				} else {
 					animateHor = 0;
 					countArray += 1;
@@ -203,14 +204,19 @@ public class Sprite {
 		
 		int sourceX = frameZeiger * width;
 		int sourceY = spriteRow * height;
-		Rect source = new Rect(sourceX, sourceY, sourceX + width, sourceY
+		source = new Rect(sourceX, sourceY, sourceX + width, sourceY
 				+ height); // Rechteck mit den jeweiligen Eckkoordinaten des
 							// Sprite-Frames
-		Rect destine = new Rect(actualPos + (width / 2), actualY, actualPos
+		destine = new Rect(actualX + (width / 2), actualY, actualX
 				+ (5 * width / 2), actualY + (2 * height));
 
 		canvas.drawBitmap(bmp, source, destine, null);
-
+		
+	}
+	
+	public Rect getDestine(){
+		return new Rect(actualX + (width / 2), actualY, actualX
+				+ (5 * width / 2), actualY + (2 * height));
 	}
 
 }

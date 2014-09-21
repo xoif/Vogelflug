@@ -1,27 +1,32 @@
 package paetow.seifert.vogelflug;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class HindernisLeftLong extends HindernisAbstract{
 
-	public HindernisLeftLong(Bitmap bmp, GameView theGameView) {
+	public HindernisLeftLong(Bitmap bmp, Sprite theSprite, GameView theGameView) {
 		super(theGameView);
-		this.bmp=bmp;
-		this.xPos= 30;
-		this.yPos= 0;
+		this.theSprite = theSprite;
+		this.bmp =bmp;
+		this.xPos = 30;
+		this.yPos = 0;
 		this.xSpeed = 0;
 		this.ySpeed = 10;
 		this.width = bmp.getWidth();
 		this.height = bmp.getHeight();
 		this.draw = false;
+		this.destine = new Rect();
 	}
 	public void setdraw(){
 		draw=true;
 	}
 	
-	public void onDraw(Canvas canvas){
+	@SuppressLint("WrongCall") public void onDraw(Canvas canvas){
 		if(draw == true){
 			source = new Rect(0, 0, height, width);
 			destine = new Rect(xPos, theGameView.getHeight() - yPos, 2*width/5+xPos,
@@ -31,8 +36,15 @@ public class HindernisLeftLong extends HindernisAbstract{
 			if(yPos >= theGameView.getHeight()+100){
 				draw = false;
 				yPos = 0;
-			}
+			}	
 		}
+		if(Rect.intersects(theSprite.getDestine(), destine)){
+			Paint farbe = new Paint();
+			farbe.setColor(Color.RED);
+			farbe.setTextSize(150);
+			canvas.drawText("Verloren", 50, 100, farbe);
+		}
+			
 		
 	}
 	
