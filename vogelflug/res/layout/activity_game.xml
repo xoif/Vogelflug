@@ -8,16 +8,16 @@
         android:id="@+id/gameView1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/pauseGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/gameView1"
-        android:layout_alignTop="@+id/gameView1"
-        android:layout_marginRight="22dp"
-        android:layout_marginTop="54dp"
-        android:text="Button" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="23dp"
+        android:text="Pause" />
 
 </RelativeLayout>

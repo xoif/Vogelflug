@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -19,7 +20,7 @@ public class GameView extends SurfaceView {
 	private Bitmap sourceBackground;
 	private Bitmap sourceWallLeft, sourceWallRight;
 	private Bitmap branchShortLeft, branchShortRight, branchLongLeft, branchLongRight, oachKatzl;
-	private GameLoopThread theGameLoopThread;
+	private static GameLoopThread theGameLoopThread;
 	private Sprite theSprite;
 	private Controller theController;
 	private Wind theWind;
@@ -60,6 +61,8 @@ public class GameView extends SurfaceView {
 			@Override
 			public void surfaceChanged(SurfaceHolder holder, int format,
 					int width, int height) {
+				
+				
 				// TODO Auto-generated method stub
 
 			}
@@ -107,4 +110,11 @@ public class GameView extends SurfaceView {
 		boolean answer = theController.onTouchEvent(event);
 		return answer;
 	}
+
+	public static GameLoopThread getTheGameLoopThread() {
+		return theGameLoopThread;
+	}
+	
+	
+	
 }
