@@ -14,7 +14,7 @@ public class GameActivity extends Activity implements OnClickListener{
 
 	private Dialog pauseDialog;
 	private Button dialogResume, pauseGame;
-	//private static GameLoopThread TheGameLoopThread;
+	private static GameLoopThread TheGameLoopThread;
 	
 	
 	
@@ -41,7 +41,7 @@ public class GameActivity extends Activity implements OnClickListener{
     
     public void onClick(View v)
 	{
-	/*	switch (v.getId()){
+		switch (v.getId()){
 		case R.id.dialogResume:  resume();
 		break;
 	
@@ -49,30 +49,30 @@ public class GameActivity extends Activity implements OnClickListener{
 		break;
 		
 		}
-		*/
+		
 	}
 
     
-    /*
+    
     
     public void setPause ()
     {
     pauseDialog.show();
     // pauseDialog.setTitle("Huhn Huhn Ei Ei Ei");
     TheGameLoopThread = GameView.getTheGameLoopThread();
-  //  TheGameLoopThread.setRunning(false);
+    TheGameLoopThread.setRunning(false);
     //
     }
     
    public void resume()
     {
-    	//pauseDialog.hide();
-    	pauseDialog.dismiss(); 
+    	pauseDialog.hide();
+    	//pauseDialog.dismiss(); 
     	TheGameLoopThread.setRunning(true); 
-    	TheGameLoopThread.run(); 
+    //	TheGameLoopThread.start(); 
     }
     
-    */
+    
 
 }
 
