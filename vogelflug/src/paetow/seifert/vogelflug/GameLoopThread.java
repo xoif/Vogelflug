@@ -31,7 +31,7 @@ public void run ()
 long TPS = 1000 / FPS;
 long startTime, sleepTime;
 
-
+while (true){
 while (isRunning)                      //solange der Thread laeuft
 {
 //Canvas theCanvas = null;                 //ein leeres Canvas-Objekt wird erstellt bzw. wird dessen Inhalt geloescht
@@ -59,6 +59,7 @@ try {
 
 }
 	
+}
 }
 }
 }

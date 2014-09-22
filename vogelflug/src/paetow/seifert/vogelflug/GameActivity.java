@@ -5,6 +5,7 @@ package paetow.seifert.vogelflug;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -60,16 +61,26 @@ public class GameActivity extends Activity implements OnClickListener{
     pauseDialog.show();
     // pauseDialog.setTitle("Huhn Huhn Ei Ei Ei");
     TheGameLoopThread = GameView.getTheGameLoopThread();
+ /*   try {
+		TheGameLoopThread.wait();
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} */
+
     TheGameLoopThread.setRunning(false);
-    //
     }
     
    public void resume()
     {
     	pauseDialog.hide();
     	//pauseDialog.dismiss(); 
-    	TheGameLoopThread.setRunning(true); 
+   TheGameLoopThread.setRunning(true); 
     //	TheGameLoopThread.start(); 
+    	
+
+//    	TheGameLoopThread.notify();
+    	
     }
     
     
