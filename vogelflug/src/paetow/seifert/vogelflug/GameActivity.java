@@ -61,26 +61,14 @@ public class GameActivity extends Activity implements OnClickListener{
     pauseDialog.show();
     // pauseDialog.setTitle("Huhn Huhn Ei Ei Ei");
     TheGameLoopThread = GameView.getTheGameLoopThread();
- /*   try {
-		TheGameLoopThread.wait();
-	} catch (InterruptedException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} */
-
-    TheGameLoopThread.setRunning(false);
+    TheGameLoopThread.setPaused(true);
     }
     
    public void resume()
     {
-    	pauseDialog.hide();
-    	//pauseDialog.dismiss(); 
-   TheGameLoopThread.setRunning(true); 
-    //	TheGameLoopThread.start(); 
-    	
-
-//    	TheGameLoopThread.notify();
-    	
+   pauseDialog.hide();
+   TheGameLoopThread.setPaused(false); 
+   
     }
     
     
