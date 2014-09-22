@@ -37,10 +37,12 @@ public final class R {
         public static final int rightwall=0x7f02000c;
     }
     public static final class id {
-        public static final int action_settings=0x7f080004;
+        public static final int action_settings=0x7f080006;
         public static final int dialogPauseText=0x7f080002;
-        public static final int dialogResume=0x7f080003;
+        public static final int dialogResume=0x7f080005;
         public static final int gameView1=0x7f080000;
+        public static final int imageView1=0x7f080003;
+        public static final int newGame=0x7f080004;
         public static final int pauseGame=0x7f080001;
     }
     public static final class layout {
@@ -53,6 +55,7 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
+        public static final int newGame=0x7f050004;
         public static final int pause=0x7f050003;
         public static final int resume=0x7f050002;
     }
