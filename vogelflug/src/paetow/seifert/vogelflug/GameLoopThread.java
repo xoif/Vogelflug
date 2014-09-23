@@ -2,7 +2,7 @@ package paetow.seifert.vogelflug;
 
 import android.annotation.SuppressLint;
 import android.graphics.Canvas;
-import android.os.Looper;
+
 
 @SuppressLint("WrongCall")
 public class GameLoopThread extends Thread {
