@@ -25,23 +25,24 @@ public final class R {
         public static final int alienspritegreen=0x7f020000;
         public static final int alienspritered=0x7f020001;
         public static final int backgrounddesign=0x7f020002;
-        public static final int grand=0x7f020003;
-        public static final int hintergrund=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int leftlong=0x7f020006;
-        public static final int leftshort=0x7f020007;
-        public static final int leftwall=0x7f020008;
-        public static final int oachkatzl=0x7f020009;
-        public static final int rightlong=0x7f02000a;
-        public static final int rightshort=0x7f02000b;
-        public static final int rightwall=0x7f02000c;
+        public static final int gameover=0x7f020003;
+        public static final int grand=0x7f020004;
+        public static final int hintergrund=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int leftlong=0x7f020007;
+        public static final int leftshort=0x7f020008;
+        public static final int leftwall=0x7f020009;
+        public static final int oachkatzl=0x7f02000a;
+        public static final int rightlong=0x7f02000b;
+        public static final int rightshort=0x7f02000c;
+        public static final int rightwall=0x7f02000d;
     }
     public static final class id {
+        public static final int Testbild=0x7f080003;
         public static final int action_settings=0x7f080006;
         public static final int dialogPauseText=0x7f080002;
         public static final int dialogResume=0x7f080005;
         public static final int gameView1=0x7f080000;
-        public static final int imageView1=0x7f080003;
         public static final int newGame=0x7f080004;
         public static final int pauseGame=0x7f080001;
     }

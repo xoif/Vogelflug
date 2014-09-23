@@ -40,10 +40,7 @@ public class HindernisLeftShort extends HindernisAbstract{
 			}
 		}
 		if(Rect.intersects(theSprite.getDestine(), destine)){
-			Paint farbe = new Paint();
-			farbe.setColor(Color.RED);
-			farbe.setTextSize(150);
-			canvas.drawText("Verloren", 50, 100, farbe);
+			gameOver = true;
 		}
 		
 	}

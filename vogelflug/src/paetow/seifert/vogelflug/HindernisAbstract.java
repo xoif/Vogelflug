@@ -16,6 +16,7 @@ abstract class HindernisAbstract {
 	protected boolean draw;
 	protected Rect source;
 	protected Rect destine;
+	protected static boolean gameOver = false;
 
 	public HindernisAbstract(GameView theGameView){
 		
@@ -23,4 +24,13 @@ abstract class HindernisAbstract {
 	}
 	
 	public abstract void onDraw(Canvas canvas);
+
+	public static boolean isGameOver() {
+		return gameOver;
+	}
+	
+	
+	
 }
+
+

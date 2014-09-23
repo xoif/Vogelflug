@@ -25,6 +25,8 @@ public class GameLoopThread extends Thread {
 			while (!isPaused) {
 				// Canvas theCanvas = null; //ein leeres Canvas-Objekt wird
 				// erstellt bzw. wird dessen Inhalt geloescht
+				if (!HindernisAbstract.isGameOver())
+				{
 				startTime = System.currentTimeMillis();
 				try {
 					theCanvas = theView.getHolder().lockCanvas(); // der Canvas
@@ -63,7 +65,8 @@ public class GameLoopThread extends Thread {
 
 				}
 
-			}
+			}else {GameActivity.setPause();}
+				}
 		}
 	}
 

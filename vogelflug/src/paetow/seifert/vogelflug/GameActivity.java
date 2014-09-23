@@ -4,18 +4,25 @@ package paetow.seifert.vogelflug;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class GameActivity extends Activity implements OnClickListener{
 
-	private Dialog pauseDialog;
-	private Button dialogResume, pauseGame;
+	private static Dialog pauseDialog;
+	private static Button dialogResume, pauseGame;
+	private static ImageView gameOverBild;
+	private static Bitmap bmp;
 	private static GameLoopThread TheGameLoopThread;
+	private static TextView pauseText;
 	
 	
 	
@@ -38,6 +45,12 @@ public class GameActivity extends Activity implements OnClickListener{
         pauseGame = (Button) findViewById(R.id.pauseGame); //PauseButton im Menu initialisieren
         pauseGame.setOnClickListener(this);
         
+        //im Dialog eingeblendetes ImageView initialisieren
+        
+        gameOverBild = (ImageView) findViewById(R.id.Testbild);
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.gameover);
+        pauseText = (TextView) findViewById(R.id.dialogPauseText);
+
     }
     
     public void onClick(View v)
@@ -56,10 +69,10 @@ public class GameActivity extends Activity implements OnClickListener{
     
     
     
-    public void setPause ()
+    public static void setPause ()
     {
+    if (HindernisAbstract.isGameOver()){gameOverBild.setImageBitmap(bmp);pauseText.setText("Game Over");dialogResume.setEnabled(false);dialogResume.setClickable(false);}	
     pauseDialog.show();
-    // pauseDialog.setTitle("Huhn Huhn Ei Ei Ei");
     TheGameLoopThread = GameView.getTheGameLoopThread();
     TheGameLoopThread.setPaused(true);
     }
