@@ -4,11 +4,10 @@ package paetow.seifert.vogelflug;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -19,7 +18,7 @@ import android.widget.TextView;
 public class GameActivity extends Activity implements OnClickListener{
 
 	private Dialog pauseDialog;
-	private Button dialogResume, pauseGame;
+	private Button dialogResume, pauseGame, newGame;
 	private ImageView gameOverBild;
 	private Bitmap bmp;
 	private GameLoopThread TheGameLoopThread;
@@ -34,10 +33,13 @@ public class GameActivity extends Activity implements OnClickListener{
         
         setContentView(R.layout.activity_game);
         
+        theGameActivity = this; 
+        
         //Pause Dialog initialisieren
         pauseDialog = new Dialog (this,android.R.style.Theme_Translucent);
         pauseDialog.setContentView(R.layout.pausedialog);
         pauseDialog.hide();
+        pauseText = (TextView) pauseDialog.findViewById(R.id.dialogPauseText);
         
         
         //Buttons initialisieren
@@ -47,11 +49,14 @@ public class GameActivity extends Activity implements OnClickListener{
         pauseGame = (Button) findViewById(R.id.pauseGame); //PauseButton im Menu initialisieren
         pauseGame.setOnClickListener(this);
         
-       theGameActivity = this; 
-       
+        newGame = (Button) pauseDialog.findViewById(R.id.newGame);
+        newGame.setOnClickListener(this);
+
+       //GameOver Inhalte initialisieren
        gameOverBild = (ImageView) pauseDialog.findViewById(R.id.Testbild);	
        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.gameover);
-       pauseText = (TextView) pauseDialog.findViewById(R.id.dialogPauseText);
+      
+       
        
 
     }
@@ -65,6 +70,9 @@ public class GameActivity extends Activity implements OnClickListener{
 		case R.id.pauseGame: setPause(false);
 		break;
 		
+		case R.id.newGame: Intent in = new Intent(this,GameActivity.class);
+    	startActivity(in);finish();
+	    break; 	
 		}
 		
 	}
@@ -80,7 +88,6 @@ public class GameActivity extends Activity implements OnClickListener{
         pauseText.setText("Game Over");
        dialogResume.setEnabled(false);
        dialogResume.setClickable(false);
-       Log.i("Bugtopia", "ich komme hier hin");
    }	
     
     pauseDialog.show();
