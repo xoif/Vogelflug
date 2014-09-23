@@ -71,7 +71,7 @@ public class HindernisJumping extends HindernisAbstract {
 		}
 
 		if (Rect.intersects(theSprite.getDestine(), destine)) {
-			gameOver = true;
+			new CustomTask().execute((Void[])null);
 		}
 	}
 }

@@ -3,6 +3,7 @@ package paetow.seifert.vogelflug;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.os.AsyncTask;
 
 abstract class HindernisAbstract {
 	
@@ -16,7 +17,6 @@ abstract class HindernisAbstract {
 	protected boolean draw;
 	protected Rect source;
 	protected Rect destine;
-	protected static boolean gameOver = false;
 
 	public HindernisAbstract(GameView theGameView){
 		
@@ -25,12 +25,22 @@ abstract class HindernisAbstract {
 	
 	public abstract void onDraw(Canvas canvas);
 
-	public static boolean isGameOver() {
-		return gameOver;
+	
+}
+
+
+class CustomTask extends AsyncTask<Void, Void, Void> {
+	
+	protected void onPostExecute(Void param) {
+		GameActivity gameActivity = GameActivity.getTheGameActivity();
+		gameActivity.setPause(true);
+    }
+
+	@Override
+	protected Void doInBackground(Void... params) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	
-	
 }
 
 

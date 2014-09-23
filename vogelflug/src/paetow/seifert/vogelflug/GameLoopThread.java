@@ -2,6 +2,7 @@ package paetow.seifert.vogelflug;
 
 import android.annotation.SuppressLint;
 import android.graphics.Canvas;
+import android.os.Looper;
 
 @SuppressLint("WrongCall")
 public class GameLoopThread extends Thread {
@@ -20,13 +21,13 @@ public class GameLoopThread extends Thread {
 	public void run() {
 		long TPS = 1000 / FPS;
 		long startTime, sleepTime;
-
+	
+		
 		while (isRunning) {
 			while (!isPaused) {
+			
 				// Canvas theCanvas = null; //ein leeres Canvas-Objekt wird
 				// erstellt bzw. wird dessen Inhalt geloescht
-				if (!HindernisAbstract.isGameOver())
-				{
 				startTime = System.currentTimeMillis();
 				try {
 					theCanvas = theView.getHolder().lockCanvas(); // der Canvas
@@ -65,7 +66,7 @@ public class GameLoopThread extends Thread {
 
 				}
 
-			}else {GameActivity.setPause();}
+			
 				}
 		}
 	}

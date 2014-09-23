@@ -40,7 +40,7 @@ public class HindernisLeftShort extends HindernisAbstract{
 			}
 		}
 		if(Rect.intersects(theSprite.getDestine(), destine)){
-			gameOver = true;
+			new CustomTask().execute((Void[])null);
 		}
 		
 	}

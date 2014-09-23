@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,12 +18,13 @@ import android.widget.TextView;
 
 public class GameActivity extends Activity implements OnClickListener{
 
-	private static Dialog pauseDialog;
-	private static Button dialogResume, pauseGame;
-	private static ImageView gameOverBild;
-	private static Bitmap bmp;
-	private static GameLoopThread TheGameLoopThread;
-	private static TextView pauseText;
+	private Dialog pauseDialog;
+	private Button dialogResume, pauseGame;
+	private ImageView gameOverBild;
+	private Bitmap bmp;
+	private GameLoopThread TheGameLoopThread;
+	private TextView pauseText;
+	public static GameActivity theGameActivity;
 	
 	
 	
@@ -45,11 +47,12 @@ public class GameActivity extends Activity implements OnClickListener{
         pauseGame = (Button) findViewById(R.id.pauseGame); //PauseButton im Menu initialisieren
         pauseGame.setOnClickListener(this);
         
-        //im Dialog eingeblendetes ImageView initialisieren
-        
-        gameOverBild = (ImageView) findViewById(R.id.Testbild);
-        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.gameover);
-        pauseText = (TextView) findViewById(R.id.dialogPauseText);
+       theGameActivity = this; 
+       
+       gameOverBild = (ImageView) pauseDialog.findViewById(R.id.Testbild);	
+       bmp = BitmapFactory.decodeResource(getResources(), R.drawable.gameover);
+       pauseText = (TextView) pauseDialog.findViewById(R.id.dialogPauseText);
+       
 
     }
     
@@ -59,7 +62,7 @@ public class GameActivity extends Activity implements OnClickListener{
 		case R.id.dialogResume:  resume();
 		break;
 	
-		case R.id.pauseGame: setPause();
+		case R.id.pauseGame: setPause(false);
 		break;
 		
 		}
@@ -69,9 +72,17 @@ public class GameActivity extends Activity implements OnClickListener{
     
     
     
-    public static void setPause ()
+    public void setPause (boolean gameOver)
     {
-    if (HindernisAbstract.isGameOver()){gameOverBild.setImageBitmap(bmp);pauseText.setText("Game Over");dialogResume.setEnabled(false);dialogResume.setClickable(false);}	
+    if (gameOver)
+    {
+        gameOverBild.setImageBitmap(bmp);	
+        pauseText.setText("Game Over");
+       dialogResume.setEnabled(false);
+       dialogResume.setClickable(false);
+       Log.i("Bugtopia", "ich komme hier hin");
+   }	
+    
     pauseDialog.show();
     TheGameLoopThread = GameView.getTheGameLoopThread();
     TheGameLoopThread.setPaused(true);
@@ -83,9 +94,14 @@ public class GameActivity extends Activity implements OnClickListener{
    TheGameLoopThread.setPaused(false); 
    
     }
-    
-    
 
+public static GameActivity getTheGameActivity() {
+	return theGameActivity;
+}
+    
+   
+
+ 
 }
 
 
