@@ -101,7 +101,7 @@ public class GameView extends SurfaceView {
 		theBackground.onDraw(canvas);
 		theSprite.onDraw(canvas);
 		theWind.onDraw(canvas);
-		theWand.onDraw(canvas);
+		//theWand.onDraw(canvas);
 		theHindernis.onDraw(canvas);
 	}
 

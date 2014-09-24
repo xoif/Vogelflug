@@ -28,17 +28,18 @@ public final class R {
         public static final int alienspritegreen=0x7f020000;
         public static final int alienspritered=0x7f020001;
         public static final int backgrounddesign=0x7f020002;
-        public static final int gameover=0x7f020003;
-        public static final int grand=0x7f020004;
-        public static final int hintergrund=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int leftlong=0x7f020007;
-        public static final int leftshort=0x7f020008;
-        public static final int leftwall=0x7f020009;
-        public static final int oachkatzl=0x7f02000a;
-        public static final int rightlong=0x7f02000b;
-        public static final int rightshort=0x7f02000c;
-        public static final int rightwall=0x7f02000d;
+        public static final int baloon=0x7f020003;
+        public static final int gameover=0x7f020004;
+        public static final int grand=0x7f020005;
+        public static final int hintergrund=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int leftlong=0x7f020008;
+        public static final int leftshort=0x7f020009;
+        public static final int leftwall=0x7f02000a;
+        public static final int oachkatzl=0x7f02000b;
+        public static final int rightlong=0x7f02000c;
+        public static final int rightshort=0x7f02000d;
+        public static final int rightwall=0x7f02000e;
     }
     public static final class id {
         public static final int Score=0x7f090002;

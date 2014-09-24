@@ -37,7 +37,7 @@ abstract class HindernisAbstract {
 3. Referenzen, die von doInBackground an onPostExecute() (=der Mainthread) weitergegeben werden.
 */
 
-class CustomTask extends AsyncTask<Integer, Integer, Boolean> {
+class CustomTask extends AsyncTask <Integer, Integer, Boolean> {
 
 	private GameActivity gameActivity;
 	
