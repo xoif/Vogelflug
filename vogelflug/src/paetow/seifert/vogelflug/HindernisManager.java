@@ -28,11 +28,11 @@ public class HindernisManager {
 		this.test1 = bmpShortLeft.getWidth();
 		this.test2 = bmpShortLeft.getHeight();
 		
-		linkslang = new HindernisLeftLong(bmpLongLeft, theSprite, theGameView);
-		linkskurz = new HindernisLeftShort(bmpShortLeft,theSprite, theGameView);
+	//	linkslang = new HindernisLeftLong(bmpLongLeft, theSprite, theGameView);
+	//	linkskurz = new HindernisLeftShort(bmpShortLeft,theSprite, theGameView);
 		rechtslang = new HindernisRightLong(bmpLongRight, theSprite, theGameView);
 		rechtskurz = new HindernisRightShort(bmpShortRight, theSprite, theGameView);
-		this.sprung = new HindernisJumping (sprung, theSprite, theGameView);
+	//	this.sprung = new HindernisJumping (sprung, theSprite, theGameView);
 	}
 
 	public void change() {
@@ -54,9 +54,10 @@ public class HindernisManager {
 			rechtslang.setdraw();
 		}
 		if(change == 6|| change ==10){
-			linkslang.setdraw();
+		//	linkslang.setdraw();
 			rechtskurz.setdraw();
-			sprung.setdraw();
+			rechtslang.setdraw();
+	//		sprung.setdraw();
 		}
 		
 	}
@@ -70,11 +71,11 @@ public class HindernisManager {
 			i = 0;
 		}
 		
-		linkslang.onDraw(canvas);	
-		linkskurz.onDraw(canvas);
+	//	linkslang.onDraw(canvas);	
+	//	linkskurz.onDraw(canvas);
 		rechtslang.onDraw(canvas);
 		rechtskurz.onDraw(canvas);
-		sprung.onDraw(canvas);
+//		sprung.onDraw(canvas);
 	
 	}
 

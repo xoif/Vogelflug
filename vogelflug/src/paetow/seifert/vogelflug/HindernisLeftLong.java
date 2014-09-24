@@ -26,9 +26,9 @@ public class HindernisLeftLong extends HindernisAbstract{
 	
 	@SuppressLint("WrongCall") public void onDraw(Canvas canvas){
 		if(draw == true){
-			source = new Rect(0, 0, height, width);
-			destine = new Rect(xPos, theGameView.getHeight() - yPos, 2*width/5+xPos,
-					theGameView.getHeight() + 3*height/4 - yPos);
+			source = new Rect(0, 0, width, width);
+			destine = new Rect(xPos, theGameView.getHeight() - yPos, width +xPos,
+					theGameView.getHeight() - yPos);
 			canvas.drawBitmap(bmp, source, destine, null);
 			yPos += ySpeed;
 			if(yPos >= theGameView.getHeight()+100){
