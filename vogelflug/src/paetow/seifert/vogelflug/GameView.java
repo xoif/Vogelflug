@@ -26,10 +26,12 @@ public class GameView extends SurfaceView {
 	private Background theBackground;
 	private Wand theWand;
 	private HindernisManager theHindernis;
+	private static int theWidth;
 
 	public GameView(Context context, AttributeSet attributeSet) {
 		super(context, attributeSet);
 		theGameLoopThread = new GameLoopThread(this);
+		theWidth = getWidth();
 		surfaceHolder = getHolder(); // Surface Holder regelt die Oberflaeche
 										// und legt fest was bei Veraenderung
 										// dieser passiert
@@ -112,6 +114,10 @@ public class GameView extends SurfaceView {
 
 	public static GameLoopThread getTheGameLoopThread() {
 		return theGameLoopThread;
+	}
+
+	public static int getTheWidth() {
+		return theWidth;
 	}
 	
 	

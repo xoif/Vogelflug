@@ -15,7 +15,7 @@ public class HindernisRightLong extends HindernisAbstract{
 		this.ySpeed = 10;
 		this.width = bmp.getWidth();
 		this.height = bmp.getHeight();
-		this.xPos= theGameView.getWidth() - width;  // Breite der Randwaende
+	//	this.xPos= theGameView.getWidth() - width;  // Breite der Randwaende
 		this.draw = false;
 		this.theSprite = theSprite;
 		this.destine = new Rect();
@@ -27,7 +27,7 @@ public class HindernisRightLong extends HindernisAbstract{
 	@SuppressLint("DrawAllocation") public void onDraw(Canvas canvas){
 		if(draw == true){
 			source = new Rect(0, 0, width, height);
-			destine = new Rect(theGameView.getWidth()-width-xPos, theGameView.getHeight()-yPos, theGameView.getWidth() - xPos,
+			destine = new Rect(theGameView.getWidth()-width, theGameView.getHeight()-yPos, theGameView.getWidth() - xPos,
 					theGameView.getHeight() + height - yPos);
 			canvas.drawBitmap(bmp, source, destine, null);
 			yPos +=ySpeed;

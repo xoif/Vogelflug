@@ -31,6 +31,10 @@ abstract class HindernisAbstract {
 
 
 
+
+
+
+
 /*Generics: 
 1. Referenzen, die an doInBackground weitergegeben werden
 2. Referenzen, die an onProgressUpdate weitergegeben werden
@@ -71,3 +75,6 @@ class CustomTask extends AsyncTask <Integer, Integer, Boolean> {
 	}
 }
 
+
+
+ 
