@@ -9,8 +9,10 @@ public class GameLoopThread extends Thread {
 
 	private GameView theView;
 	private boolean isRunning = false, isPaused = false;
-	static final long FPS = 20;
+	static final long FPS = 22;
 	Canvas theCanvas;
+	private static int gameScore;
+
 
 	public GameLoopThread(GameView theView) {
 		super();
@@ -28,6 +30,8 @@ public class GameLoopThread extends Thread {
 			
 				// Canvas theCanvas = null; //ein leeres Canvas-Objekt wird
 				// erstellt bzw. wird dessen Inhalt geloescht
+				gameScore ++; new CustomTask().execute(gameScore);
+				
 				startTime = System.currentTimeMillis();
 				try {
 					theCanvas = theView.getHolder().lockCanvas(); // der Canvas
@@ -78,6 +82,14 @@ public class GameLoopThread extends Thread {
 	public void setPaused(boolean isPaused) {
 		this.isPaused = isPaused;
 	}
+
+	public static int getGameScore() {
+		return gameScore;
+	}
+
+
+	
+	
 	
 	
 }

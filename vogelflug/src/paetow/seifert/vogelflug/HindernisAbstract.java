@@ -5,8 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 
+
 abstract class HindernisAbstract {
-	
+
 	protected GameView theGameView;
 	protected Sprite theSprite;
 	protected Rect spritePos;
@@ -18,29 +19,53 @@ abstract class HindernisAbstract {
 	protected Rect source;
 	protected Rect destine;
 
-	public HindernisAbstract(GameView theGameView){
-		
-		this.theGameView = theGameView;	
+	public HindernisAbstract(GameView theGameView) {
+
+		this.theGameView = theGameView;
 	}
-	
+
 	public abstract void onDraw(Canvas canvas);
 
-	
 }
 
 
-class CustomTask extends AsyncTask<Void, Void, Void> {
+
+/*Generics: 
+1. Referenzen, die an doInBackground weitergegeben werden
+2. Referenzen, die an onProgressUpdate weitergegeben werden
+3. Referenzen, die von doInBackground an onPostExecute() (=der Mainthread) weitergegeben werden.
+*/
+
+class CustomTask extends AsyncTask<Integer, Integer, Boolean> {
+
+	private GameActivity gameActivity;
 	
-	protected void onPostExecute(Void param) {
-		GameActivity gameActivity = GameActivity.getTheGameActivity();
+	@Override
+	protected Boolean doInBackground(Integer... gameScore) {
+	
+		if (gameScore[0] == -1){return true;}
+		else {
+			int Score = gameScore [0];
+		publishProgress(Score);
+		
+		return false;}
+	}
+
+	protected void onPostExecute(Boolean gameOver) {
+		if (gameOver) {
+		gameActivity = GameActivity.getTheGameActivity();	
 		gameActivity.setPause(true);
-    }
+		}
+
+
+	}
 
 	@Override
-	protected Void doInBackground(Void... params) {
+	protected void onProgressUpdate(Integer... Score) {
 		// TODO Auto-generated method stub
-		return null;
+		super.onProgressUpdate(Score);
+		gameActivity = GameActivity.getTheGameActivity();
+		gameActivity.setTheScore(Score[0]);
 	}
 }
-
 

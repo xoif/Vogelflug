@@ -37,7 +37,7 @@ public class HindernisRightShort extends HindernisAbstract{
 			}
 		}
 		if(Rect.intersects(theSprite.getDestine(), destine)){
-			new CustomTask().execute((Void[])null);
+			new CustomTask().execute(-1);
 		}
 	}
 	

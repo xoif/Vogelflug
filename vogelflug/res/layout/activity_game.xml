@@ -20,4 +20,18 @@
         android:layout_marginRight="23dp"
         android:text="Pause" />
 
+    <TextView
+        android:id="@+id/Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/pauseGame"
+        android:layout_alignBottom="@+id/pauseGame"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:clickable="false"
+        android:gravity="right"
+        android:text="0"
+        android:textColor="#E82C0C"
+        android:textSize="30sp" />
+
 </RelativeLayout>

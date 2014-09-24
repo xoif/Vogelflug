@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,8 +23,9 @@ public class GameActivity extends Activity implements OnClickListener{
 	private ImageView gameOverBild;
 	private Bitmap bmp;
 	private GameLoopThread TheGameLoopThread;
-	private TextView pauseText;
+	private TextView pauseText, gameScore;
 	public static GameActivity theGameActivity;
+    private int theScore;
 	
 	
 	
@@ -57,6 +59,8 @@ public class GameActivity extends Activity implements OnClickListener{
        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.gameover);
       
        
+       //Spielstandinhalte initialisieren
+       gameScore = (TextView)findViewById(R.id.Score);
        
 
     }
@@ -104,6 +108,17 @@ public class GameActivity extends Activity implements OnClickListener{
 
 public static GameActivity getTheGameActivity() {
 	return theGameActivity;
+}
+
+public int getTheScore() {
+	return theScore;
+}
+
+public void setTheScore(int theScore) {
+	this.theScore = theScore;
+	String Ausgabe = ""+theScore;
+	Log.i("Bugtopia", Ausgabe);
+	gameScore.setText(Ausgabe);
 }
     
    
