@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.AsyncTask;
+import android.widget.TextView;
 
 
 abstract class HindernisAbstract {
@@ -66,6 +67,7 @@ class CustomTask extends AsyncTask<Integer, Integer, Boolean> {
 		super.onProgressUpdate(Score);
 		gameActivity = GameActivity.getTheGameActivity();
 		gameActivity.setTheScore(Score[0]);
+
 	}
 }
 

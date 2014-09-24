@@ -10,6 +10,9 @@ package paetow.seifert.vogelflug;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int scorefarbe=0x7f070000;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -38,21 +41,21 @@ public final class R {
         public static final int rightwall=0x7f02000d;
     }
     public static final class id {
-        public static final int Score=0x7f080002;
-        public static final int Testbild=0x7f080004;
-        public static final int action_settings=0x7f080007;
-        public static final int dialogPauseText=0x7f080003;
-        public static final int dialogResume=0x7f080006;
-        public static final int gameView1=0x7f080000;
-        public static final int newGame=0x7f080005;
-        public static final int pauseGame=0x7f080001;
+        public static final int Score=0x7f090002;
+        public static final int Testbild=0x7f090004;
+        public static final int action_settings=0x7f090007;
+        public static final int dialogPauseText=0x7f090003;
+        public static final int dialogResume=0x7f090006;
+        public static final int gameView1=0x7f090000;
+        public static final int newGame=0x7f090005;
+        public static final int pauseGame=0x7f090001;
     }
     public static final class layout {
         public static final int activity_game=0x7f030000;
         public static final int pausedialog=0x7f030001;
     }
     public static final class menu {
-        public static final int game=0x7f070000;
+        public static final int game=0x7f080000;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;

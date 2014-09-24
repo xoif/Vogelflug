@@ -5,14 +5,12 @@ package paetow.seifert.vogelflug;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -20,10 +18,9 @@ public class GameActivity extends Activity implements OnClickListener{
 
 	private Dialog pauseDialog;
 	private Button dialogResume, pauseGame, newGame;
-	private ImageView gameOverBild;
-	private Bitmap bmp;
+	private Drawable bmp;
 	private GameLoopThread TheGameLoopThread;
-	private TextView pauseText, gameScore;
+	private TextView pauseText, gameScore, gameOverBild;
 	public static GameActivity theGameActivity;
     private int theScore;
 	
@@ -55,8 +52,8 @@ public class GameActivity extends Activity implements OnClickListener{
         newGame.setOnClickListener(this);
 
        //GameOver Inhalte initialisieren
-       gameOverBild = (ImageView) pauseDialog.findViewById(R.id.Testbild);	
-       bmp = BitmapFactory.decodeResource(getResources(), R.drawable.gameover);
+       gameOverBild = (TextView) pauseDialog.findViewById(R.id.Testbild);	
+       bmp =  getResources().getDrawable(R.drawable.gameover);
       
        
        //Spielstandinhalte initialisieren
@@ -88,7 +85,7 @@ public class GameActivity extends Activity implements OnClickListener{
     {
     if (gameOver)
     {
-        gameOverBild.setImageBitmap(bmp);	
+        gameOverBild.setBackground(bmp);
         pauseText.setText("Game Over");
        dialogResume.setEnabled(false);
        dialogResume.setClickable(false);
@@ -119,6 +116,12 @@ public void setTheScore(int theScore) {
 	String Ausgabe = ""+theScore;
 	Log.i("Bugtopia", Ausgabe);
 	gameScore.setText(Ausgabe);
+
+//	gameOverBild.setText(theScore);
+}
+
+public TextView getGameOverBild() {
+	return gameOverBild;
 }
     
    
