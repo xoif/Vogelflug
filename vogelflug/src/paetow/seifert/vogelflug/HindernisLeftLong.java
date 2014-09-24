@@ -11,7 +11,6 @@ public class HindernisLeftLong extends HindernisAbstract{
 		super(theGameView);
 		this.theSprite = theSprite;
 		this.bmp =bmp;
-		this.xPos = 30;
 		this.yPos = 0;
 		this.xSpeed = 0;
 		this.ySpeed = 10;
@@ -19,7 +18,11 @@ public class HindernisLeftLong extends HindernisAbstract{
 		this.height = bmp.getHeight();
 		this.draw = false;
 		this.destine = new Rect();
+		this.position = LaneChooser.LANE_LEFT_LONG;
+		
+		
 	}
+	
 	public void setdraw(){
 		draw=true;
 	}
@@ -27,7 +30,7 @@ public class HindernisLeftLong extends HindernisAbstract{
 	@SuppressLint("WrongCall") public void onDraw(Canvas canvas){
 		if(draw == true){
 			source = new Rect(0, 0, width, width);
-			destine = new Rect(xPos, theGameView.getHeight() - yPos, width +xPos,
+			destine = new Rect(position.left, theGameView.getHeight() - yPos, position.right,
 					theGameView.getHeight() - yPos);
 			canvas.drawBitmap(bmp, source, destine, null);
 			yPos += ySpeed;

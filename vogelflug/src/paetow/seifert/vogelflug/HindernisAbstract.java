@@ -1,10 +1,11 @@
 package paetow.seifert.vogelflug;
 
+
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.AsyncTask;
-import android.widget.TextView;
+
 
 
 abstract class HindernisAbstract {
@@ -13,7 +14,8 @@ abstract class HindernisAbstract {
 	protected Sprite theSprite;
 	protected Rect spritePos;
 	protected Bitmap bmp, wall;
-	protected int xPos, yPos;
+	protected int yPos;
+    protected LaneChooser position;
 	protected int xSpeed, ySpeed;
 	protected int width, height;
 	protected boolean draw;
@@ -74,6 +76,7 @@ class CustomTask extends AsyncTask <Integer, Integer, Boolean> {
 
 	}
 }
+
 
 
 

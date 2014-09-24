@@ -12,6 +12,7 @@ public class HindernisJumping extends HindernisAbstract {
 	private int spriteRow = 0; // 0 fuer Flug von Rechts, 1 fuer Flug von Links
 	private int frameZeiger = 0;
 	private boolean first;
+	private int xPos;
 
 	public HindernisJumping(Bitmap bmp, Sprite theSprite, GameView theGameView) {
 		super(theGameView);

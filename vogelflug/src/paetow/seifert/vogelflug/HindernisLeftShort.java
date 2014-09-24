@@ -10,7 +10,7 @@ public class HindernisLeftShort extends HindernisAbstract{
 	public HindernisLeftShort(Bitmap bmp, Sprite theSprite, GameView theGameView) {
 		super(theGameView);
 		this.bmp=bmp;
-		this.xPos= 50;
+		this.position = LaneChooser.LANE_1;
 		this.yPos= 0;
 		this.xSpeed = 0;
 		this.ySpeed = 10;
@@ -28,7 +28,7 @@ public class HindernisLeftShort extends HindernisAbstract{
 	@SuppressLint("DrawAllocation") public void onDraw(Canvas canvas){
 		if(draw == true){
 			source = new Rect(0, 0, width, height);
-			destine = new Rect(xPos, theGameView.getHeight() - yPos,  theGameView.getWidth()/8,
+			destine = new Rect(position.left, theGameView.getHeight() - yPos,  position.right,
 					theGameView.getHeight() + height - yPos);
 			canvas.drawBitmap(bmp, source, destine, null);
 			yPos +=ySpeed;
