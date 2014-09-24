@@ -116,15 +116,8 @@ public void setTheScore(int theScore) {
 	String Ausgabe = ""+theScore;
 	Log.i("Bugtopia", Ausgabe);
 	gameScore.setText(Ausgabe);
-
-//	gameOverBild.setText(theScore);
+	gameOverBild.setText(Ausgabe);
 }
-
-public TextView getGameOverBild() {
-	return gameOverBild;
-}
-    
-   
 
  
 }
