@@ -15,7 +15,7 @@ abstract class HindernisAbstract {
 	protected Rect spritePos;
 	protected Bitmap bmp, wall;
 	protected int yPos;
-    protected LaneChooser position;
+    protected HindernisManager.LaneChooser position;
 	protected int xSpeed, ySpeed;
 	protected int width, height;
 	protected boolean draw;
@@ -25,6 +25,7 @@ abstract class HindernisAbstract {
 	public HindernisAbstract(GameView theGameView) {
 
 		this.theGameView = theGameView;
+		
 	}
 
 	public abstract void onDraw(Canvas canvas);

@@ -86,6 +86,9 @@ public class GameLoopThread extends Thread {
 	public static int getGameScore() {
 		return gameScore;
 	}
+	public static void setGameScore(int x) {
+		gameScore = x;
+	}
 
 
 	
