@@ -71,8 +71,11 @@ public class GameActivity extends Activity implements OnClickListener{
 		case R.id.pauseGame: setPause(false);
 		break;
 		
-		case R.id.newGame: Intent in = new Intent(this,GameActivity.class);
-    	startActivity(in);finish();
+		case R.id.newGame: 
+		recreate();
+		new GameView(this, null);
+		GameLoopThread.setGameScore(0);
+		pauseDialog.hide();
 	    break; 	
 		}
 		
@@ -85,8 +88,8 @@ public class GameActivity extends Activity implements OnClickListener{
     {
     if (gameOver)
     {
-        gameOverBild.setBackground(bmp);
-        pauseText.setText("Game Over");
+       gameOverBild.setBackground(bmp);
+       pauseText.setText("Game Over");
        dialogResume.setEnabled(false);
        dialogResume.setClickable(false);
    }	
@@ -114,7 +117,6 @@ public int getTheScore() {
 public void setTheScore(int theScore) {
 	this.theScore = theScore;
 	String Ausgabe = ""+theScore;
-	Log.i("Bugtopia", Ausgabe);
 	gameScore.setText(Ausgabe);
 	gameOverBild.setText(Ausgabe);
 }

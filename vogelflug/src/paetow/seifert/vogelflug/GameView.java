@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -31,7 +33,6 @@ public class GameView extends SurfaceView {
 	public GameView(Context context, AttributeSet attributeSet) {
 		super(context, attributeSet);
 		theGameLoopThread = new GameLoopThread(this);
-		theWidth = getWidth();
 		surfaceHolder = getHolder(); // Surface Holder regelt die Oberflaeche
 										// und legt fest was bei Veraenderung
 										// dieser passiert
@@ -48,15 +49,24 @@ public class GameView extends SurfaceView {
 					} catch (InterruptedException e) {
 
 					}
-
 				}
+				bmpFly.recycle();
+				bmpFloat.recycle();
+				sourceBackground.recycle();
+				sourceWallLeft.recycle();
+				sourceWallRight.recycle();
+				branchShortLeft.recycle();
+				branchShortRight.recycle();
+				branchLongLeft.recycle();
+				branchLongRight.recycle();
+				oachKatzl.recycle();				
 			}
 
 			@Override
 			public void surfaceCreated(SurfaceHolder holder) {
 				theGameLoopThread.setRunning(true);
 				theGameLoopThread.start();
-
+				theWidth = getMeasuredWidth();
 			}
 
 			@Override
@@ -105,6 +115,7 @@ public class GameView extends SurfaceView {
 		theWind.onDraw(canvas);
 		//theWand.onDraw(canvas);
 		theHindernis.onDraw(canvas);
+		
 	}
 
 	public boolean onTouchEvent(MotionEvent event) {
@@ -119,6 +130,7 @@ public class GameView extends SurfaceView {
 	public static int getTheWidth() {
 		return theWidth;
 	}
+	
 	
 	
 	
