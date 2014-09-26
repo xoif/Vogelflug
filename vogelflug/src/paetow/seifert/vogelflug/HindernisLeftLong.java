@@ -3,8 +3,6 @@ package paetow.seifert.vogelflug;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Rect;
 
 public class HindernisLeftLong extends HindernisAbstract{
@@ -32,7 +30,7 @@ public class HindernisLeftLong extends HindernisAbstract{
 	@SuppressLint("WrongCall") public void onDraw(Canvas canvas){
 		
 		if(draw == true){
-			source = new Rect(0, 0, width, width);
+			source = new Rect(0, 0, width, height);
 			destine = new Rect(HindernisManager.LaneChooser.getLeft(position) , theGameView.getHeight() - yPos, 
 					HindernisManager.LaneChooser.getRight(position),
 					theGameView.getHeight() + height - yPos);
@@ -44,8 +42,8 @@ public class HindernisLeftLong extends HindernisAbstract{
 			}	
 		}
 		
-		
-		if(Rect.intersects(theSprite.getDestine(), destine)){
+		if(KollisionsErkennung.isCollisionDetected(bmp, destine,
+				theSprite.getBitmap(), theSprite.getDestine())){
 			new CustomTask().execute(-1);
 		}
 			
