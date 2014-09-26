@@ -36,7 +36,7 @@ public class HindernisManager {
 	}
 
 	public void change() {
-		change = 6;// Zufall.nextInt(7)+1;
+		change = 6 ;//Zufall.nextInt(7)+1;
 		if (change == 1) {
 			linkslang.setdraw();
 			// sprung.setdraw();
@@ -73,7 +73,7 @@ public class HindernisManager {
 
 	@SuppressLint("WrongCall")
 	public void onDraw(Canvas canvas) {
-		if (i < 50) {
+		if (i < 70) {
 			i++;
 		} else {
 			change();

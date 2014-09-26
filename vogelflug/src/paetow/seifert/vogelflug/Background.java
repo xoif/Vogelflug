@@ -11,36 +11,33 @@ public class Background {
 	private int yScroll = 0;
 	private Rect source, source2, destine;
 	private int level = 1;
-	private boolean change = true;
 
 	public Background(GameView gameView) {
 		this.theGameView = gameView;
+		this.background = gameView.getBackground(1);
+		this.backgroundNext = gameView.getBackground(2);
 	}
 
-	private void getBackgroundSource ()
-	{
-		if (level == 1) 
-		{
+	private void getBackgroundSource() {
+		if (level == 1) {
 			background = theGameView.getBackground(1);
 			backgroundNext = theGameView.getBackground(2);
-			change = false;
+
 		}
-		
-		else if (level == 2)
-		{
+
+		if (level == 2) {
 			background = theGameView.getBackground(2);
 			backgroundNext = theGameView.getBackground(3);
-			change = false;
 		}
-		
-		else {background = backgroundNext;
-		change = false;}
-		
+
+		if (level == 3) {
+			background = backgroundNext;
+		}
+
 	}
-	
-	
+
 	private void scroll() {
-		
+
 		source = new Rect(0, yScroll, theGameView.getWidth(), yScroll
 				+ theGameView.getHeight());
 		source2 = new Rect(0, yScroll - background.getHeight(),
@@ -51,17 +48,16 @@ public class Background {
 
 		if (yScroll < background.getHeight()) {
 			yScroll++;
-		} 
-		else {
+		} else {
 			yScroll = 0;
-			level ++; change = true;
+			level++;
+			getBackgroundSource();
 		}
 
 	}
 
 	public void onDraw(Canvas canvas) {
-		
-		if (change){getBackgroundSource();}
+
 		scroll();
 		canvas.drawBitmap(background, source, destine, null);
 		canvas.drawBitmap(backgroundNext, source2, destine, null);

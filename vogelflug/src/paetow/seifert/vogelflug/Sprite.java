@@ -20,10 +20,12 @@ public class Sprite {
 	boolean bouncedVer = false;
 	boolean bouncedHor = false;
 	boolean first = true;
+	boolean collision = false;
 
 	private Bitmap bmp;
 	private Bitmap bmpFly; // Bitmap einlesen
 	private Bitmap bmpFloat;
+	private static Bitmap background, backgroundNext;
 	private int width;
 	private int height;
 	private Rect source, destine;
@@ -180,7 +182,6 @@ public class Sprite {
 			bmp = bmpFloat;
 			spriteRow = 2;
 		}
-		
 		if(animateHor == 1) {
 			if (countArray < posX.length) {
 				goRight();
@@ -201,15 +202,13 @@ public class Sprite {
 		if(animateVer == 4) {
 			goDown();
 		}
-		
 		int sourceX = frameZeiger * width;
 		int sourceY = spriteRow * height;
 		source = new Rect(sourceX, sourceY, sourceX + width, sourceY
 				+ height); // Rechteck mit den jeweiligen Eckkoordinaten des
 							// Sprite-Frames
 		destine = new Rect(actualX + (width / 2), actualY, actualX
-				+ (5 * width / 2), actualY + (2 * height));
-
+				+ (5 * width / 2), actualY + (2 * height));	
 		canvas.drawBitmap(bmp, source, destine, null);
 		
 	}
@@ -218,5 +217,15 @@ public class Sprite {
 		return new Rect(actualX + (width / 2), actualY, actualX
 				+ (5 * width / 2), actualY + (2 * height));
 	}
+	
+	public static void setBackground(Bitmap background1, Bitmap background2){
+		background = background1;
+		backgroundNext = background2;
+	}
+	public Bitmap getBitmap(){
+		return bmp;		
+	}
+
+	
 
 }

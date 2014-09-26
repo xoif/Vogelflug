@@ -117,10 +117,10 @@ public class GameView extends SurfaceView {
 	{
 	if (level == 1){
 		sourceBackground = BitmapFactory.decodeResource(getResources(),R.drawable.wolken);return sourceBackground;}
-	else if(level ==2){
+	if(level ==2){
 			sourceBackground = BitmapFactory.decodeResource(getResources(),R.drawable.wald);return sourceBackground;
 		}	
-	else {BitmapFactory.decodeResource(getResources(),R.drawable.buschwerk);return sourceBackground;}	
+	else {sourceBackground = BitmapFactory.decodeResource(getResources(),R.drawable.buschwerk);return sourceBackground;}	
 	}
 
 	@Override
@@ -130,7 +130,7 @@ public class GameView extends SurfaceView {
 		theSprite.onDraw(canvas);
 		theWind.onDraw(canvas);
 		//theWand.onDraw(canvas);
-	//	theHindernis.onDraw(canvas);
+		theHindernis.onDraw(canvas);
 		
 	}
 	

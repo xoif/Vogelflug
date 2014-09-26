@@ -69,7 +69,8 @@ public class HindernisJumping extends HindernisAbstract {
 
 		}
 
-		if (Rect.intersects(theSprite.getDestine(), destine)) {
+		if(KollisionsErkennung.isCollisionDetected(bmp, destine,
+				theSprite.getBitmap(), theSprite.getDestine())){
 			new CustomTask().execute(-1);
 		}
 	}

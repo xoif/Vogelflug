@@ -38,7 +38,8 @@ public class HindernisLeftShort extends HindernisAbstract{
 				yPos = 0;
 			}
 		}
-		if(Rect.intersects(theSprite.getDestine(), destine)){
+		if(KollisionsErkennung.isCollisionDetected(bmp, destine,
+				theSprite.getBitmap(), theSprite.getDestine())){
 			new CustomTask().execute(-1);
 		}
 		
