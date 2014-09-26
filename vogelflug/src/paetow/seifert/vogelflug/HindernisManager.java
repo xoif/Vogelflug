@@ -5,8 +5,6 @@ import java.util.Random;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 
 public class HindernisManager {
 
@@ -36,7 +34,7 @@ public class HindernisManager {
 	}
 
 	public void change() {
-		change = 6 ;//Zufall.nextInt(7)+1;
+		change = Zufall.nextInt(7)+1;
 		if (change == 1) {
 			linkslang.setdraw();
 			// sprung.setdraw();
@@ -44,12 +42,12 @@ public class HindernisManager {
 		}
 		if (change == 2) {
 			linkskurz.setdraw();
-			// sprung.setdraw();
+			sprung.setdraw();
 
 		}
 		if (change == 3) {
-			rechtslang.setdraw();
-			// sprung.setdraw();
+		//	rechtslang.setdraw();
+			 sprung.setdraw();
 
 		}
 		if (change == 4) {
@@ -59,14 +57,14 @@ public class HindernisManager {
 		}
 		if (change == 5 || change == 7) {
 			linkskurz.setdraw();
-			rechtslang.setdraw();
-			// sprung.setdraw();
+		//	rechtslang.setdraw();
+		 sprung.setdraw();
 
 		}
 		if (change == 6 || change == 8) {
 			linkslang.setdraw();
 			rechtskurz.setdraw();
-	//		sprung.setdraw();
+			sprung.setdraw();
 		}
 
 	}

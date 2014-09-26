@@ -7,23 +7,29 @@ import android.graphics.Rect;
 
 public class HindernisJumping extends HindernisAbstract {
 
-	private final int BMP_COLUMNS = 5;
+	
+	private final int BMP_COLUMNS = 3;
 	private final int BMP_ROWS = 2;
 	private int spriteRow = 0; // 0 fuer Flug von Rechts, 1 fuer Flug von Links
 	private int frameZeiger = 0;
 	private boolean first;
 	private int xPos;
+	private int vorzeichen = -1;
+	
+	
+	
 
 	public HindernisJumping(Bitmap bmp, Sprite theSprite, GameView theGameView) {
 		super(theGameView);
 		this.bmp = bmp;
-		this.xSpeed = -30;
-		this.ySpeed = -15;
+		this.xSpeed = 0;    //-30
+		this.ySpeed = -10; //-15;
 		this.width = bmp.getWidth() / BMP_COLUMNS;
 		this.height = bmp.getHeight() / BMP_ROWS;
 		this.draw = false;
 		this.theSprite = theSprite;
 		this.destine = new Rect();
+	
 	}
 
 	public void setdraw() {
@@ -33,8 +39,8 @@ public class HindernisJumping extends HindernisAbstract {
 	@SuppressLint("DrawAllocation") @Override
 	public void onDraw(Canvas canvas) {
 		if (first == true) {
-			xPos = theGameView.getWidth();
-			yPos = theGameView.getHeight() / 3;
+			xPos = theGameView.getWidth() - bmp.getWidth();
+			yPos = theGameView.getHeight();
 		}
 		if (draw == true) {
 
@@ -44,27 +50,35 @@ public class HindernisJumping extends HindernisAbstract {
 			source = new Rect(sourceX, sourceY, sourceX + width, sourceY
 					+ height);
 
-			destine = new Rect(xPos, theGameView.getHeight() - yPos, width
-					+ xPos, theGameView.getHeight() + height - yPos);
+			destine = new Rect(xPos, yPos, width
+					+ xPos,  yPos-height);
 
-			frameZeiger = ++frameZeiger % BMP_COLUMNS;
+			 if (frameZeiger == BMP_COLUMNS || frameZeiger == 0) {vorzeichen *= -1;}
+			 frameZeiger += vorzeichen; 
 
 			canvas.drawBitmap(bmp, source, destine, null);
+		
 			yPos += ySpeed;
 			xPos += xSpeed;
+			
+			if (yPos <= theGameView.getHeight() /3 && spriteRow == 1){ySpeed = -15;xSpeed = 30;}
+			if (yPos <= theGameView.getHeight() /3 && spriteRow == 0){ySpeed = -15;xSpeed = -30;}
+			
 			if (xPos >= theGameView.getWidth() + 100) {
 				draw = false;
-				yPos = 900;
-				xPos = theGameView.getWidth();
-				xSpeed = -30;
+				yPos = 0;
+				xPos = theGameView.getWidth()-bmp.getWidth();
+				xSpeed = 0;
+				ySpeed = 10;
 				spriteRow = 0;
 			}
 		}
 		if (xPos <= -250) {
 			draw = false;
-			yPos = 900;
+			yPos = 0;
 			xPos = 0;
-			xSpeed = 30;
+			xSpeed = 0;
+			ySpeed = 10;
 			spriteRow = 1;
 
 		}
