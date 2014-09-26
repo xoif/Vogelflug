@@ -47,7 +47,7 @@ public class Background {
 				theGameView.getHeight());
 
 		if (yScroll < background.getHeight()) {
-			yScroll++;
+			yScroll+=5;
 		} else {
 			yScroll = 0;
 			level++;
