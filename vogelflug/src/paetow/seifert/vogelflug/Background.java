@@ -6,16 +6,37 @@ import android.graphics.Rect;
 
 public class Background {
 	private Bitmap background;
+	private Bitmap backgroundNext;
 	private GameView theGameView;
 	private int yScroll = 0;
 	private Rect source, source2, destine;
+	private int level = 1;
+	private boolean change = true;
 
-	public Background(Bitmap sourceBackground, GameView gameView) {
-		this.background = sourceBackground;
+	public Background(GameView gameView) {
 		this.theGameView = gameView;
 	}
 
-	public void scroll() {
+	private void getBackgroundSource ()
+	{
+		if (level == 1) 
+		{
+			background = theGameView.getBackground(1);
+			backgroundNext = theGameView.getBackground(2);
+			change = false;
+		}
+		
+		else if (level ==2)
+		{
+			background = theGameView.getBackground(2);
+			backgroundNext = theGameView.getBackground(3);
+			change = false;
+		}
+		
+	}
+	
+	
+	private void scroll() {
 		
 		source = new Rect(0, yScroll, theGameView.getWidth(), yScroll
 				+ theGameView.getHeight());
@@ -30,13 +51,16 @@ public class Background {
 		} 
 		else {
 			yScroll = 0;
+			level ++; change = true;
 		}
 
 	}
 
 	public void onDraw(Canvas canvas) {
+		
+		if (change){getBackgroundSource();}
 		scroll();
 		canvas.drawBitmap(background, source, destine, null);
-		canvas.drawBitmap(background, source2, destine, null);
+		canvas.drawBitmap(backgroundNext, source2, destine, null);
 	}
 }
