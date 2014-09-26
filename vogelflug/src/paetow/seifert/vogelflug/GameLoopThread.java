@@ -9,7 +9,7 @@ public class GameLoopThread extends Thread {
 
 	private GameView theView;
 	private boolean isRunning = false, isPaused = false;
-	static final long FPS = 22;
+	static final long FPS = 120;
 	Canvas theCanvas;
 	private static int gameScore;
 

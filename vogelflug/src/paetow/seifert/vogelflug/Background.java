@@ -26,12 +26,15 @@ public class Background {
 			change = false;
 		}
 		
-		else if (level ==2)
+		else if (level == 2)
 		{
 			background = theGameView.getBackground(2);
 			backgroundNext = theGameView.getBackground(3);
 			change = false;
 		}
+		
+		else {background = backgroundNext;
+		change = false;}
 		
 	}
 	
