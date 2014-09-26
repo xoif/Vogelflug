@@ -38,9 +38,10 @@ public final class R {
         public static final int oachkatzl=0x7f02000a;
         public static final int rightlong=0x7f02000b;
         public static final int rightshort=0x7f02000c;
-        public static final int rightwall=0x7f02000d;
-        public static final int wald=0x7f02000e;
-        public static final int wolken=0x7f02000f;
+        public static final int rightshortbranch=0x7f02000d;
+        public static final int rightwall=0x7f02000e;
+        public static final int wald=0x7f02000f;
+        public static final int wolken=0x7f020010;
     }
     public static final class id {
         public static final int Score=0x7f090002;

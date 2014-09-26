@@ -66,7 +66,7 @@ public class HindernisManager {
 		if (change == 6 || change == 8) {
 			linkslang.setdraw();
 			rechtskurz.setdraw();
-			sprung.setdraw();
+	//		sprung.setdraw();
 		}
 
 	}
