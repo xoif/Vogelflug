@@ -7,7 +7,7 @@ import android.graphics.Rect;
 
 public class HindernisLeftLong extends HindernisAbstract{
 	
-	private final int BMP_COLUMNS = 4;
+	private final int BMP_COLUMNS = 6;
 	private int frameZeiger = 0;
 	private int vorzeichen = -1; //positiv oder negativ
 
@@ -42,7 +42,7 @@ public class HindernisLeftLong extends HindernisAbstract{
 					theGameView.getHeight() + height - yPos);
 		
 
-			 if (frameZeiger == BMP_COLUMNS || frameZeiger == 0) {vorzeichen *= -1;}
+			 if (frameZeiger == BMP_COLUMNS -1 || frameZeiger == 0) {vorzeichen *= -1;}
 			 frameZeiger += vorzeichen; 
 			 
 			canvas.drawBitmap(bmp, source, destine, null);
