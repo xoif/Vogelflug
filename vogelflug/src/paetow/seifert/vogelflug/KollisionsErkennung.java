@@ -19,17 +19,20 @@ public class KollisionsErkennung {
  * @param x2 x-position of bitmap2 on screen.
  * @param y2 y-position of bitmap2 on screen.
  */
-public static boolean isCollisionDetected(Bitmap bitmap1, Rect boundsFirst,
+public static boolean isCollisionDetected(Bitmap bitmap1, Rect source, Rect boundsFirst,
         Bitmap bitmap2, Rect boundsSecond) {
 
     Rect bounds1 = boundsFirst;
     Rect bounds2 = boundsSecond;
 
     if (Rect.intersects(bounds1, bounds2)) {
+    	
+    	Bitmap temp = Bitmap.createBitmap(bitmap1, source.left, source.top, source.right-source.left, source.bottom);
+    	
         Rect collisionBounds = getCollisionBounds(bounds1, bounds2);
         for (int i = collisionBounds.left; i < collisionBounds.right; i++) {
             for (int j = collisionBounds.top; j < collisionBounds.bottom; j++) {
-                int bitmap1Pixel = bitmap1.getPixel(i-bounds1.left, j-bounds1.top);
+                int bitmap1Pixel = temp.getPixel(i-bounds1.left, j-bounds1.top);
                 int bitmap2Pixel = bitmap2.getPixel(i-bounds2.left, j-bounds2.top);
                 if (isFilled(bitmap1Pixel) && isFilled(bitmap2Pixel)) {
                     return true;

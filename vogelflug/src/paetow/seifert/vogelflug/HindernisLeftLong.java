@@ -45,6 +45,8 @@ public class HindernisLeftLong extends HindernisAbstract{
 			 if (frameZeiger == BMP_COLUMNS -1 || frameZeiger == 0) {vorzeichen *= -1;}
 			 frameZeiger += vorzeichen; 
 			 
+			 
+	
 			canvas.drawBitmap(bmp, source, destine, null);
 			yPos += ySpeed;
 			if(yPos >= theGameView.getHeight()+height){
@@ -53,7 +55,7 @@ public class HindernisLeftLong extends HindernisAbstract{
 			}	
 		}
 		
-		if(KollisionsErkennung.isCollisionDetected(bmp, destine,
+		if(KollisionsErkennung.isCollisionDetected(bmp, source ,destine,
 				theSprite.getBitmap(), theSprite.getDestine())){
 			new CustomTask().execute(-1);
 		}
