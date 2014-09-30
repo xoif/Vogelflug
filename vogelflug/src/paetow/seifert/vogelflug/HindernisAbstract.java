@@ -15,6 +15,7 @@ abstract class HindernisAbstract {
 	protected Rect spritePos;
 	protected Bitmap bmp, wall;
 	protected int yPos;
+	protected int xPos;
     protected HindernisManager.LaneChooser position;
 	protected int xSpeed, ySpeed;
 	protected int width, height;

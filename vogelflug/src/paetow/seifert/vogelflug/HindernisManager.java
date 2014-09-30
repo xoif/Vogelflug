@@ -19,6 +19,7 @@ public class HindernisManager {
 	private HindernisRightLong rechtslang;
 	private HindernisRightShort rechtskurz;
 	private HindernisJumping sprung;
+	private static  boolean stop;
 
 	public HindernisManager(Bitmap bmpShortLeft, Bitmap bmpShortRight,
 			Bitmap bmpLongLeft, Bitmap bmpLongRight, Bitmap sprung,
@@ -33,6 +34,15 @@ public class HindernisManager {
 		this.sprung = new HindernisJumping(sprung, theSprite, theGameView);
 	}
 
+	
+	public static void setUnabled(){
+		stop = true;
+	}
+	
+	public static void setEnabled(){
+		stop = false;
+	}
+	
 	public void change() {
 		change = Zufall.nextInt(7)+1;
 		if (change == 1) {
@@ -138,6 +148,8 @@ public class HindernisManager {
 			default: {
 				return 0;
 			}
+			
+			
 
 			}
 		}
