@@ -32,7 +32,7 @@ public class Sprite {
 
 	private final int BMP_COLUMNS = 4;
 	private final int BMP_ROWS = 4;
-	private int spriteRow = 2; // von 0 - 3 fuer die jeweiligen Richtungssprites
+	private int spriteRow = 0; // von 0 - 3 fuer die jeweiligen Richtungssprites
 	private int frameZeiger = 0;
 
 	public Sprite(Bitmap bmpFly, Bitmap bmpFloat, GameView theGameView) {
@@ -180,7 +180,7 @@ public class Sprite {
 		
 		if((animateHor == 0)&&(animateVer == 0)){
 			bmp = bmpFloat;
-			spriteRow = 2;
+			spriteRow = ++spriteRow % spriteRow;
 		}
 		if(animateHor == 1) {
 			if (countArray < posX.length) {
@@ -207,8 +207,8 @@ public class Sprite {
 		source = new Rect(sourceX, sourceY, sourceX + width, sourceY
 				+ height); // Rechteck mit den jeweiligen Eckkoordinaten des
 							// Sprite-Frames
-		destine = new Rect(actualX + (width / 2), actualY, actualX
-				+ (5 * width / 2), actualY + (2 * height));	
+		destine = new Rect(actualX, actualY, actualX
+				+ width, actualY + height);	
 		canvas.drawBitmap(bmp, source, destine, null);
 		
 	}

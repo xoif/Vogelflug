@@ -52,12 +52,12 @@ public class HindernisManager {
 		}
 		if (change == 2) {
 			linkskurz.setdraw();
-			sprung.setdraw();
+		//	sprung.setdraw();
 
 		}
 		if (change == 3) {
 		//	rechtslang.setdraw();
-			 sprung.setdraw();
+		//	 sprung.setdraw();
 
 		}
 		if (change == 4) {
@@ -68,13 +68,13 @@ public class HindernisManager {
 		if (change == 5 || change == 7) {
 			linkskurz.setdraw();
 		//	rechtslang.setdraw();
-		 sprung.setdraw();
+	//	 sprung.setdraw();
 
 		}
 		if (change == 6 || change == 8) {
 			linkslang.setdraw();
 			rechtskurz.setdraw();
-			sprung.setdraw();
+	//		sprung.setdraw();
 		}
 
 	}
