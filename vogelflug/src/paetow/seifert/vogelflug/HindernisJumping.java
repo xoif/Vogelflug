@@ -99,7 +99,7 @@ public class HindernisJumping extends HindernisAbstract {
 			}
 		}
 		if (KollisionsErkennung.isCollisionDetected(bmp, source, destine,
-				theSprite.getBitmap(), theSprite.getDestine())) {
+				/*	theSprite.getBitmap(),*/ theSprite.getDestine())) {
 			new CustomTask().execute(-1);
 		}
 	}

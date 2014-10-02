@@ -38,7 +38,7 @@ public class HindernisRightShort extends HindernisAbstract{
 			}
 		}
 		if(KollisionsErkennung.isCollisionDetected(bmp, destine,
-				theSprite.getBitmap(), theSprite.getDestine())){
+			/*	theSprite.getBitmap(),*/ theSprite.getDestine())){
 			new CustomTask().execute(-1);
 		}
 		
