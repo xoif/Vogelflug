@@ -25,7 +25,6 @@ public class Sprite {
 	private Bitmap bmp;
 	private Bitmap bmpFly; // Bitmap einlesen
 	private Bitmap bmpFloat;
-	private static Bitmap background, backgroundNext;
 	private int width;
 	private int height;
 	private Rect source, destine;
@@ -214,14 +213,9 @@ public class Sprite {
 	}
 	
 	public Rect getDestine(){
-		return new Rect(actualX + (width / 2), actualY, actualX
-				+ (5 * width / 2), actualY + (2 * height));
+		return destine;
 	}
 	
-	public static void setBackground(Bitmap background1, Bitmap background2){
-		background = background1;
-		backgroundNext = background2;
-	}
 	public Bitmap getBitmap(){
 		return bmp;		
 	}

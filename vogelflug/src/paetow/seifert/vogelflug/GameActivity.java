@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+@SuppressWarnings("unused")
 public class GameActivity extends Activity implements OnClickListener{
 
 	private Dialog pauseDialog;

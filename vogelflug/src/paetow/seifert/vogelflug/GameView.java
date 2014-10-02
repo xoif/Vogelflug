@@ -30,6 +30,7 @@ public class GameView extends SurfaceView {
 	private Controller theController;
 	private Wind theWind;
 	private Background theBackground;
+	@SuppressWarnings("unused")
 	private Wand theWand;
 
 	private HindernisManager theHindernis;

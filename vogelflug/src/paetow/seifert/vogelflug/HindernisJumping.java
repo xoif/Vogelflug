@@ -11,7 +11,6 @@ public class HindernisJumping extends HindernisAbstract {
 	private final int BMP_ROWS = 2;
 	private int spriteRow = 1; // 0 fuer Flug von Rechts, 1 fuer Flug von Links
 	private int frameZeiger = 0;
-	private boolean first;
 	private int vorzeichen = -1;
 	private boolean wait;
 
