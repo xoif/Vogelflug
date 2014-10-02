@@ -19,8 +19,8 @@ public class HindernisManager {
 	private HindernisRightLong rechtslang;
 	private HindernisRightShort rechtskurz;
 	private HindernisJumping sprung;
-	private static  boolean stop;
-
+	
+	
 	public HindernisManager(Bitmap bmpShortLeft, Bitmap bmpShortRight,
 			Bitmap bmpLongLeft, Bitmap bmpLongRight, Bitmap sprung,
 			Sprite theSprite, GameView theGameView) {
@@ -36,11 +36,9 @@ public class HindernisManager {
 
 	
 	public static void setUnabled(){
-		stop = true;
 	}
 	
 	public static void setEnabled(){
-		stop = false;
 	}
 	
 	public void change() {
@@ -57,7 +55,7 @@ public class HindernisManager {
 		}
 		if (change == 3) {
 		//	rechtslang.setdraw();
-		//	 sprung.setdraw();
+			 sprung.setdraw();
 
 		}
 		if (change == 4) {
@@ -74,7 +72,7 @@ public class HindernisManager {
 		if (change == 6 || change == 8) {
 			linkslang.setdraw();
 			rechtskurz.setdraw();
-	//		sprung.setdraw();
+			sprung.setdraw();
 		}
 
 	}
