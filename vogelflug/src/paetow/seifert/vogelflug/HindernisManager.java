@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 
 public class HindernisManager {
 
+	@SuppressWarnings("unused")
 	private GameView theGameView;
 
 	Random Zufall = new Random();

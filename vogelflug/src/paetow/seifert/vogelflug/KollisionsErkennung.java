@@ -1,11 +1,5 @@
 package paetow.seifert.vogelflug;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.Rect;
-
-
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Rect;
 
 
@@ -20,20 +14,18 @@ public class KollisionsErkennung {
  * @param y2 y-position of bitmap2 on screen.
  */
 	public static boolean isCollisionDetected(Bitmap bitmap1, Rect source, Rect boundsFirst,
-	     /*   Bitmap bitmap2,*/ Rect boundsSecond) {
+			Rect boundsSecond) {
 
 	    Rect bounds1 = boundsFirst;
-	    Rect bounds2 = boundsSecond;
-	    Rect rectTemp = new Rect( bounds2.left /= 16,bounds2.top /=16, bounds2.right /= 16, bounds2.bottom /= 16); //Aenderungen HIER
-	   
+	    Rect bounds2 = boundsSecond;	   
 	    
 
-	    if (Rect.intersects(bounds1, rectTemp /* hier stand mald bounds2*/)) {
+	    if (Rect.intersects(bounds1, bounds2)) {
 	    	
 	    	Bitmap temp = Bitmap.createBitmap(bitmap1, source.left, source.top, source.right-source.left, source.bottom-source.top);
 	    	
 	    	
-	        Rect collisionBounds = getCollisionBounds(bounds1, rectTemp/* hier stand mald bounds2*/);
+	        Rect collisionBounds = getCollisionBounds(bounds1, bounds2);
 	        for (int i = collisionBounds.left; i < collisionBounds.right; i++) {
 	            for (int j = collisionBounds.top; j < collisionBounds.bottom; j++) {
 	                int bitmap1Pixel = temp.getPixel(i-bounds1.left, j-bounds1.top);
